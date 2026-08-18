@@ -1,0 +1,53 @@
+---
+description: Tone, natural shop-floor Indonesian phrasing, banned terms, and pitch deck standards for IAKA 2026 presentations and papers
+globs: **/*.{pptx,md}
+alwaysApply: true
+---
+
+# IAKA Presentation & Wording Standards
+
+This rule enforces authentic, natural shop-floor terminology and pitch-deck presentation standards for the IAKA 2026 Innovation & Kaizen project (DSS SIRINE 4.0 - Unit Cetak Pita Cukai, Perum Peruri).
+
+---
+
+## 1. Strictly Banned Terms & Natural Replacements
+
+Do NOT use overly academic, hyper-formal ("terlalu baku"), or AI-typical words. Always use authentic Peruri shop-floor terms:
+
+| ❌ Banned / AI-like Term | ✅ Use Instead (Natural Shop-Floor Indonesian) | Context & Why |
+| :--- | :--- | :--- |
+| **Agregat** | **"Data general"**, **"Data umum"**, **"Ringkasan global"** | Istilah 'agregat' asing bagi operator/juri pabrik. Gunakan istilah umum/general. |
+| **Keausan** *(vague/isolated)* | **"Penurunan performa komponen mesin seiring umur mesin"**, atau sebut komponen langsung: *rol karet mengeras/licin*, *selimut karet (blanket) turun elastisitas*, *penjepit silinder melemah*. | Jangan gunakan kata 'keausan' berdiri sendiri tanpa menyebut gejala fisik komponen dan dampaknya pada lembar cetak. |
+| **Lantai produksi / Lantai pabrik** | **"Di lapangan"**, **"Di unit cetak"**, **"Di area mesin"**, **"Meja kontrol mesin"** | 'Lantai produksi' adalah terjemahan kaku dari *shop floor*. Praktisi Peruri menyebutnya 'di lapangan' atau 'di unit cetak'. |
+| **Armada / Fleet** | **"6 Mesin cetak (4 Komori: KMR 1–4, 2 Ryobi: RYB 1–2)"** | Istilah armada/fleet cocok untuk kapal/pesawat, bukan mesin percetakan. Sebutkan jumlah dan tipe mesinnya secara langsung. |
+| **Kertas kerja finansial** | **"Skala dampak finansial"**, **"Simulasi finansial"**, **"Potensi penghematan biaya tambah cetak"** | Istilah 'kertas kerja finansial' terdengar kaku seperti akuntan audit. Gunakan simulasi / dampak finansial. |
+| **Data pasif** | **"Data mentah SAP"**, **"Data pasif (dormant data)"** | Data CSV/tabel SAP mentah di komputer kantor yang belum diolah menjadi grafik. |
+
+---
+
+## 2. Tone & Voice: Authentic Shop-Floor Pitch Deck
+
+1. **Practical & Grounded:** Tulisan harus terdengar seperti disusun oleh praktisi/operator lapangan yang paham betul meja mesin, buku folio, kartu order PO, dan unit verifikasi.
+2. **Pitch Deck Value-Driven:** Setiap slide harus fokus pada *value creation*, dampak finansial (*cost avoidance*), dan efisiensi nyata tanpa bertele-tele.
+3. **Self-Explanatory:** Slide presentasi harus bisa dipahami utuh oleh dewan juri tanpa juri harus membaca dokumen makalah yang tebal.
+4. **No Fluff:** Hindari kalimat pembuka yang klise atau paragraf berulang-ulang tanpa data konkret.
+
+---
+
+## 3. Data Verification Standard (4 Atribut Wajib)
+
+Setiap angka yang ditampilkan dalam slide atau dokumen WAJIB memiliki 4 atribut:
+1. **Nilai (Value):** e.g. `177.636.930`, `4,61%`, `Rp 24,56 Miliar`, `Rp 3.000`
+2. **Satuan (Unit):** e.g. `Lembar Cetak (LK)`, `%`, `Rupiah / Tahun`, `Jam / Mesin`
+3. **Periode (Period):** e.g. `Tahun 2025`, `Jan – Mar 2026 (Q1)`, `Semester 1 2026`
+4. **Sumber Terverifikasi (Source):** e.g. `Modul SAP Production Order (ZPPRSIPPC0012)`, `Unit Verifikasi Pita Cukai`
+
+---
+
+## 4. Presentation Slide Structure & Design Rules
+
+- **Slide Expansion:** Diperbolehkan membagi 1 poin panduan template menjadi maksimal 2 slide jika materi padat (e.g. `01.1` dan `01.2`), agar tidak terjadi penumpukan teks.
+- **Top Hero KPIs:** Gunakan 3–4 kartu KPI di bagian atas slide untuk metrik utama.
+- **Card-Based Grids:** Gunakan kontainer rounded-rectangle berwarna tematik (Navy `#20288F`, Purple `#6A2CC9`, Red `#C62828`, Green `#2E7D32`) dengan border lembut.
+- **Visual Integration:** Selalu sertakan grafik native (misal Bar Chart tren kuartalan) pada slide data, bukan hanya teks/tabel polos.
+- **Header & Badge Template:** Pertahankan nomor badge (e.g. `01.1`, `02`), judul, sub-judul *"Tujuan bagian ini: ..."*, logo Peruri di kanan atas, dan ornamen gelombang di kiri atas.
