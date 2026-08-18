@@ -15,6 +15,13 @@ Standards and conventions for writing Innovation and Kaizen Award (IAKA) papers 
 - **Flowing Industrial Storytelling:** Use structured, analytical, and narrative paragraphs to build operational context and shop-floor reality. **Strictly avoid dry, prompt-like bullet point lists or disjointed summaries.**
 - **Shop-Floor Operational Grounding:** Ground every argument in the real factory dynamics of Perum Peruri (Unit Cetak Pita Cukai, DJBC Kemenkeu RI, armada Komori KMR1–KMR4, Ryobi RYB1–RYB2, GTO 1–3, pola kerja 3 gilir/shift 24/7, kebiasaan operator di meja kontrol mesin, dan friksi *data silo*).
 - **Smooth Transition & Narrative Signposts:** Connect problem background, root causes, prescriptive solutions, and measurable impact naturally using transitional phrases (*"Pertama...", "Kedua...", "Sebagai contoh...", "Sebaliknya...", "Hasil investigasi membuktikan..."*).
+- **STRICTLY BANNED: Rhetorical Grandstanding & Formulaic Antithesis ("Not Just X, But Y" Trope):**
+  - ❌ **DILARANG:** Pola retoris klise khas AI seperti *"bukan sekadar X, melainkan Y"*, *"bukan hanya X biasa, melainkan sebuah restrukturisasi fundamental / transformasi revolusioner / lompatan paradigma..."*
+  - ❌ **DILARANG:** Bahasa marketing/PR puffery & dramatisasi berlebihan: *"mengukir tonggak sejarah baru"*, *"sebuah bukti nyata dari"*, *"lompatan paradigma operasional"*, *"menyelami lebih dalam"*.
+  - ✅ **WAJIB:** Tulis secara lugas, teknis, dan berbasis fakta/mekanisme lapangan (*Show, don't preach*). Langsung jelaskan fungsi alat, komponen fisik, alur data, atau dampaknya tanpa retorika memuji diri sendiri.
+  - *Contoh Koreksi:*
+    - ❌ *"Keunggulan DSS SIRINE 4.0 bukan sekadar otomatisasi pencatatan biasa, melainkan sebuah restrukturisasi fundamental dalam tata kelola..."*
+    - ✅ *"Kebaruan DSS SIRINE 4.0 terletak pada integrasi otomatis data transaksi meja mesin, data pesanan SAP, dan verifikasi mutu ke dalam dasbor tindakan preskriptif harian..."*
 
 ---
 

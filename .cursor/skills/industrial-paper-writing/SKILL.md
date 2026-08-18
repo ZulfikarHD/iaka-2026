@@ -12,6 +12,7 @@ A comprehensive guide for authoring rigorous, narrative-driven technical and ope
 1. **Flowing Industrial Storytelling:**
    - Avoid dry, disjointed bullet-point lists or generic prompt-like AI summaries.
    - Build deep operational context through connected narrative paragraphs that portray shop-floor realities, human workflows, machine operations, and administrative friction.
+   - **Strictly Ban Formulaic Antithesis & Rhetorical Grandstanding:** Never use AI clichés like *"bukan sekadar X, melainkan Y"*, *"bukan hanya X biasa, melainkan restrukturisasi fundamental"*, *"mengukir tonggak sejarah baru"*, or *"lompatan paradigma"*. State technical mechanisms, components, and factual workflows directly (*Show, don't preach*).
 2. **Shop-Floor Operational Grounding:**
    - Ground every claim in real factory dynamics (fleets, lines, shifts, operator behavior, data silos, maintenance cycles, and customer SLAs).
 3. **Executive Clarity & Visual Callouts:**

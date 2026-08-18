@@ -16,6 +16,8 @@ Do NOT use overly academic, hyper-formal ("terlalu baku"), or AI-typical words. 
 
 | ❌ Banned / AI-like Term | ✅ Use Instead (Natural Shop-Floor Indonesian) | Context & Why |
 | :--- | :--- | :--- |
+| **"Bukan sekadar X, melainkan Y" / Rhetorical Grandstanding** | **Langsung sebut fungsi & alur teknisnya (*Show, don't preach*)** | Pola antitesis klise khas AI (*"bukan sekadar alat biasa, melainkan lompatan paradigma..."*). Sangat artifisial. |
+| **"Mengukir tonggak sejarah" / "Lompatan paradigma" / "Revolusioner"** | **"Pembaruan alur kerja"**, **"Peningkatan kapabilitas sistem"**, **"Otomasi pencatatan per PO"** | Bahasa PR/marketing hiperbolik yang tidak realistis untuk konteks teknisi pabrik. |
 | **Agregat** | **"Data general"**, **"Data umum"**, **"Ringkasan global"** | Istilah 'agregat' asing bagi operator/juri pabrik. Gunakan istilah umum/general. |
 | **Keausan** *(vague/isolated)* | **"Penurunan performa komponen mesin seiring umur mesin"**, atau sebut komponen langsung: *rol karet mengeras/licin*, *selimut karet (blanket) turun elastisitas*, *penjepit silinder melemah*. | Jangan gunakan kata 'keausan' berdiri sendiri tanpa menyebut gejala fisik komponen dan dampaknya pada lembar cetak. |
 | **Lantai produksi / Lantai pabrik** | **"Di lapangan"**, **"Di unit cetak"**, **"Di area mesin"**, **"Meja kontrol mesin"** | 'Lantai produksi' adalah terjemahan kaku dari *shop floor*. Praktisi Peruri menyebutnya 'di lapangan' atau 'di unit cetak'. |

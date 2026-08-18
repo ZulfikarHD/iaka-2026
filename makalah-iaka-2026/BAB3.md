@@ -7,8 +7,8 @@
 
 ## 3.1 Konsep Solusi & Arsitektur Sistem Dua Lapisan (*Two-Tier Architecture*)
 
-### 3.1.1 Paradigma Transformasi: Dari SIRINE 3.5 (2024) Menuju DSS SIRINE 4.0 (2026)
-Pengembangan sistem pada ajang inovasi tahun 2026 ini bukan sekadar pembaruan tampilan grafis perangkat lunak, melainkan sebuah **lompatan paradigma operasional (*operational paradigm shift*)** dalam tata kelola produksi percetakan sekuriti negara di Perum Peruri. Gagasan ini berakar dari pengalaman empiris tim inovasi di area mesin saat mengawal target produksi pita cukai yang terus meningkat di tengah tuntutan toleransi cacat yang semakin ketat dari Direktorat Jenderal Bea dan Cukai (DJBC) Kemenkeu RI.
+### 3.1.1 Latar Gagasan & Kebutuhan Solusi: Dari SIRINE 3.5 Menuju DSS SIRINE 4.0
+Pengembangan DSS SIRINE 4.0 dirancang untuk menjawab kebutuhan taktis operasional di area mesin cetak pita cukai Perum Peruri. Gagasan ini berakar dari pengalaman langsung tim inovasi di lapangan saat mengawal target produksi pita cukai yang terus meningkat di tengah tuntutan toleransi cacat yang semakin ketat dari Direktorat Jenderal Bea dan Cukai (DJBC) Kemenkeu RI.
 
 Pada tahun 2024, implementasi SIRINE versi 3.5 berhasil menjawab satu pertanyaan mendasar: *"Jenis kerusakan apa yang paling dominan di Unit Cetak Pita Cukai secara umum?"* Melalui penyajian data kategori cacat global di tingkat unit, sistem tersebut mampu mendeteksi bahwa cacat blobor dan noda tinta merupakan penyumbang afval terbesar. Namun, sebagaimana diuraikan pada Bab 1 dan Bab 2, capaian tersebut menemui titik jenuh (*plateau effect*) sepanjang tahun 2025. Manajemen dan pengawas lapangan dihadapkan pada kebuntuan baru karena ringkasan data global (*unit-wide general summary*) tidak memiliki daya jelajah atribusi: sistem tidak dapat memberitahukan **pada mesin mana** kerusakan terkonsentrasi, **faktor operasional (*shift*/tim) mana** yang memicu lonjakan cacat, serta **tindakan preskriptif apa** yang harus segera dieksekusi oleh teknisi pemeliharaan di lini produksi.
 
@@ -26,7 +26,7 @@ Untuk meruntuhkan dinding pembatas tersebut, **DSS SIRINE 4.0** dihadirkan sebag
 Perancangan DSS SIRINE 4.0 berpijak pada prinsip integrasi manufaktur cerdas (*Smart Factory*) sebagaimana dirumuskan oleh Lee, Kao, dan Yang (2014), yang menegaskan bahwa efisiensi industri manufaktur modern hanya dapat dicapai apabila sistem analitik mampu mengonversi data pasif menjadi wawasan preskriptif yang dapat dieksekusi langsung oleh operator di lapangan. Dalam konteks percetakan sekuriti berkecepatan tinggi di Peruri, sistem pendukung keputusan harus memenuhi tiga pilar kelayakan teknis:
 1. **Kecepatan dan Kemudahan Akses di Lapangan (*Usability & Lean UX*):** Antarmuka dirancang dengan mengadopsi prinsip *10 Principles for Good Design* oleh Dieter Rams serta panduan *UI Style Guide* modern (Wathan & Schoger). Prinsip ini memastikan operator di meja kontrol mesin dapat melakukan entri data transaksi dalam hitungan detik tanpa memecah konsentrasi pengawasan cetak.
 2. **Kualitas dan Integritas Informasi (*Information Quality*):** Mengacu pada kerangka *WebQual 4.0*, sistem menjamin bahwa seluruh data yang disajikan memenuhi standar relevansi tinggi, akurasi mutlak (ditarik langsung dari sistem SAP `ZPPRSIPPC0012` dan modul verifikasi mutu), ketepatan waktu *real-time*, serta kelengkapan atribut operasional per pesanan.
-3. **Pemeliharaan Berbasis Kondisi Riil (*Condition-Based Maintenance / CBM*):** Mengubah paradigma servis armada mesin Komori dan Ryobi dari jadwal berkala statis (*time-based*) menjadi intervensi presisi berbasis profil anomali komponen (*defect-driven maintenance*).
+3. **Pemeliharaan Berbasis Kondisi Riil (*Condition-Based Maintenance / CBM*):** Mengubah sistem pemeliharaan mesin Komori dan Ryobi dari jadwal berkala statis (*time-based*) menjadi intervensi presisi berbasis profil anomali komponen (*defect-driven maintenance*).
 
 ---
 
@@ -83,7 +83,8 @@ Tabel 3.1 Struktur Parameter Data Transaksi Form Konfirmasi PO Cetak Digital
 
 *(Sumber: Spesifikasi Fungsional Perangkat Lunak DSS SIRINE 4.0)*
 
-Melalui integrasi formulir digital ini, Unit Cetak Pita Cukai berhasil mengukir tonggak sejarah baru dalam tata kelola operasionalnya. Untuk pertama kalinya, setiap lembar cetak pita cukai memiliki silsilah pelacakan (*traceability lineage*) yang lengkap dan terhubung langsung dari hulu ke hilir:
+Melalui integrasi formulir digital ini, Unit Cetak Pita Cukai menghubungkan seluruh rantai data operasional dari hulu ke hilir:
+setiap lembar cetak pita cukai kini memiliki silsilah pelacakan (*traceability lineage*) yang lengkap:
 
 $$\mathbf{\text{PO Nomor 3000311244}} \longrightarrow \mathbf{\text{Mesin RYB1}} \longrightarrow \mathbf{\text{Shift Malam}} \longrightarrow \mathbf{\text{Tim B}} \longrightarrow \mathbf{3.154 \text{ LK Cetak}} \longrightarrow \mathbf{1.654 \text{ Rusak (52,44\%)}}$$
 
@@ -282,4 +283,4 @@ Tabel 3.3 Matriks Kausalitas Intervensi Fitur DSS SIRINE 4.0 terhadap Akar Masal
 ---
 
 ### Kesimpulan Bab 3
-Melalui perancangan **Arsitektur Dua Lapisan** dan implementasi **6 Modul Fitur Unggulan**, DSS SIRINE 4.0 berhasil membuktikan dirinya sebagai solusi teknologi yang tepat sasaran, *lean*, dan secara fundamental meruntuhkan tembok pemisahan data (*data silo*). Sistem ini tidak hanya menyediakan rekam jejak produksi digital yang transparan dan dapat diaudit, tetapi juga memberdayakan seluruh jajaran personel—mulai dari operator lini, teknisi pemeliharaan, kepala kelompok, hingga manajemen unit—dengan wawasan preskriptif *real-time* untuk mengambil keputusan operasional yang cepat dan akurat. Pembahasan komparatif mengenai keunggulan, kebaruan, alur proses kerja *before-after*, serta target kuantitatif solusi ini diuraikan secara mendalam pada **BAB 4**.
+Melalui perancangan **Arsitektur Dua Lapisan** dan implementasi **6 Modul Fitur Unggulan**, DSS SIRINE 4.0 mengeliminasi pemisahan data (*data silo*) antara area mesin dan unit verifikasi mutu. Sistem ini menyediakan rekam jejak produksi digital yang terstruktur dan dapat diaudit, serta membekali operator, teknisi pemeliharaan, kepala kelompok, dan manajemen unit dengan data preskriptif *real-time* untuk pengambilan keputusan perbaikan mutu. Analisis keunggulan, kebaruan sistem, alur proses kerja sebelum dan sesudah implementasi, serta target kuantitatif Fase 1 diuraikan pada **BAB 4**.
