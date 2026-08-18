@@ -39,9 +39,9 @@
   * **Rata-rata Baseline Inschiet 2025: 4,61%**
 * **Slot Visual:** `[VISUAL 1.1: Bar Chart Inschiet Cetak per Kuartal 2025 vs Garis Rata-rata 4,61%]` *(Asset: extracted_images/image1.png / image2.png)*
 
-## 1.3 Identifikasi Masalah Utama (The Blind Spot Pasca-SIRINE 2024)
+## 1.3 Identifikasi Masalah Utama (The Blind Spot Pasca-SIRINE 3.5 (2024))
 > **Tujuan:** Mendefinisikan masalah operasional spesifik yang belum terjawab.
-* Keberhasilan SIRINE 2024: Memetakan breakdown jenis kerusakan (inschiet turun ke 4,06% di akhir 2024).
+* Keberhasilan SIRINE 3.5 (2024): Memetakan breakdown jenis kerusakan (inschiet turun ke 4,06% di akhir 2024).
 * Munculnya Titik Buta 2025:
   * Data jenis kerusakan ada, namun tidak diketahui **mesin mana** yang menjadi penyumbang utama.
   * Tidak diketahui apakah inschiet dipicu oleh **kondisi fisik mesin** atau **kondisi operasional tim/shift**.
@@ -75,7 +75,7 @@
 
 ## 2.3 Temuan Fakta Lapangan & Bukti "Data Silo"
 > **Tujuan:** Menampilkan bukti empiris pemisahan data yang menjadi penghalang diagnosa supervisor.
-* Data SAP (Production Order): Format mentah CSV sulit dianalisis cepat oleh operator lantai pabrik (*Asset: image10.png*).
+* Data SAP (Production Order): Format mentah CSV sulit dianalisis cepat oleh operator di lapangan (*Asset: image10.png*).
 * Data Verifikasi (HCTS): Hanya mencatat agregat cacat tanpa rekam jejak mesin dan shift pencetak.
 * Data Lapangan: Tercatat di buku folio fisik yang rentan hilang dan tidak dapat diagregasi secara analitis.
 
@@ -89,11 +89,11 @@
 
 ## 3.1 Konsep Solusi & Arsitektur Sistem Dua Lapisan (Two-Tier Architecture)
 > **Tujuan:** Menjelaskan konsep solusi terstruktur dalam mentransformasi data menjadi keputusan preskriptif.
-* Evolusi dari SIRINE 2024 (Menjawab: *Jenis kerusakan apa?*) menuju DSS SIRINE 4.0 (Menjawab: *Mesin mana? Kondisi operasional mana? Tindakan apa?*).
-* **Slot Visual:** `[VISUAL 3.1: Diagram Evolusi Konsep SIRINE 2024 vs DSS SIRINE 2026]` *(Asset: extracted_images/image5.png)*
+* Evolusi dari SIRINE 3.5 (2024) (Menjawab: *Jenis kerusakan apa?*) menuju DSS SIRINE 4.0 (Menjawab: *Mesin mana? Kondisi operasional mana? Tindakan apa?*).
+* **Slot Visual:** `[VISUAL 3.1: Diagram Evolusi Konsep SIRINE 3.5 (2024) vs DSS SIRINE 2026]` *(Asset: extracted_images/image5.png)*
 * Arsitektur Dua Lapisan:
   * **Lapisan 1 (Pengumpulan Data Digital):** Form Konfirmasi PO Cetak + Jadwal & Template Gilir Operator.
-  * **Lapisan 2 (Analisis & Visualisasi Preskriptif):** Engine pengolah data SAP + HCTS menjadi dashboard aksi supervisor dan monitoring lantai produksi.
+  * **Lapisan 2 (Analisis & Visualisasi Preskriptif):** Engine pengolah data SAP + HCTS menjadi dashboard aksi supervisor dan monitoring lapangan.
 * **Slot Visual:** `[VISUAL 3.2: Diagram Arsitektur Dua Lapisan DSS SIRINE 4.0]` *(Asset: extracted_images/image6.png)*
 
 ## 3.2 Breakdown 6 Modul Fitur Unggulan DSS SIRINE 4.0
@@ -103,7 +103,7 @@
 * **Fitur 3 – Dashboard Produksi Mesin Cetak:** Transformasi data mentah SAP menjadi grafik kuantitas (LK) dan persentase inschiet per unit mesin (*Asset: image11.png – image15.png*).
 * **Fitur 4 – Dashboard Produksi Unit Cetak:** Analisis komparatif kuantitas dan % rusak per kondisi operasional tim/shift dengan hak akses berjenjang (*traceability*).
 * **Fitur 5 – Modul Audit Jenis Kerusakan Tiap Mesin:** Diagram Pareto kerusakan spesifik mesin (Noda 42,34%, Zig-zag 20,18%, Blobor 13,54%) untuk panduan teknisi maintenance (*Asset: image16.png, image17.png*).
-* **Fitur 6 – Floor-Level Real-Time Andon Display:** Layar informasi real-time di lantai produksi (auto-refresh 60 detik) untuk monitoring langsung progress order dan peringatan jatuh tempo (*Asset: image18.png – image21.png*).
+* **Fitur 6 – Floor-Level Real-Time Andon Display:** Layar informasi real-time di area kerja cetak (auto-refresh 60 detik) untuk monitoring langsung progress order dan peringatan jatuh tempo (*Asset: image18.png – image21.png*).
 
 ## 3.3 Mekanisme Hubungan Sebab-Akibat (Menyerang Akar Masalah Bab 2)
 > **Tujuan:** Membuktikan bagaimana fitur-fitur solusi secara presisi melenyapkan 4 cabang penyebab Fishbone.
@@ -118,7 +118,7 @@
 ## 4.1 Unsur Kebaruan & Matriks Kapabilitas
 > **Tujuan:** Membuktikan diferensiasi dan lompatan kapabilitas dibanding cara lama dan praktik unit lain.
 * **Tabel Matriks Kapabilitas Komparatif:**
-  | Parameter Kapabilitas | Cara Lama (Pra-2024) | SIRINE 2024 | DSS SIRINE 4.0 (2026) |
+  | Parameter Kapabilitas | Cara Lama (Pra-2024) | SIRINE 3.5 (2024) | DSS SIRINE 4.0 (2026) |
   | :--- | :---: | :---: | :---: |
   | Identifikasi Cacat Dominan Unit | Manual / Lisan | ✅ Agregat Unit | ✅ Granular |
   | Pemetaan Mesin Inschiet Tertinggi | ❌ Tidak Ada | ❌ Tidak Ada | ✅ **Real-Time per Mesin** |

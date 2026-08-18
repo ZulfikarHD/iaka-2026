@@ -25,7 +25,7 @@ Berdasarkan Peraturan Pemerintah Nomor 06 Tahun 2019, Perum Percetakan Uang Repu
 Dalam menjalankan mandat produksi tersebut, lini produksi Unit Cetak Pita Cukai beroperasi dengan intensitas tinggi selama 24 jam sehari secara non-stop dengan menerapkan pola 3 *shift* kerja bergilir (*Shift* Pagi pukul 07.00–15.00 WIB, *Shift* Sore pukul 15.00–23.00 WIB, dan *Shift* Malam pukul 23.00–07.00 WIB). Operasional harian ini didukung oleh armada mesin cetak *sheet-fed offset* berkecepatan tinggi yang terdiri dari 4 unit mesin Komori (KMR1, KMR2, KMR3, KMR4), 2 unit mesin Ryobi (RYB1, RYB2), serta 3 unit mesin cetak penunjang GTO (GTO-1, GTO-2, GTO-3), dengan melibatkan sekitar 42 personel operator cetak dan kepala kelompok. Volume pesanan pita cukai yang dikelola unit ini mencapai rata-rata 160.000.000 lembar cetak per tahun, dengan volume aktual pada tahun anggaran 2025 menembus 177.636.930 lembar cetak.
 
 ### 1.1.2 Keterbatasan Sistem Pencatatan Eksisting (*Data Silo* & Rekapitulasi Manual)
-Meskipun lini produksi Unit Cetak Pita Cukai memproses jutaan lembar dokumen sekuriti negara setiap hari dengan mesin-mesin modern, sistem pencatatan operasional di lantai pabrik (*shop floor*) hingga akhir tahun 2025 masih terperangkap dalam kondisi pemisahan data (*data silo*). Dari sisi kuantitas di lapangan, hasil cetak harian, nomor mesin, dan nomor PO masih dicatat manual pada buku folio fisik yang menumpuk di meja kontrol mesin dan baru direkapitulasi saat momen Penilaian Kinerja Pegawai Kuartalan maupun Evaluasi Akhir Masa Kontrak. Sebaliknya, data kualitas dari sistem SAP (T-Code: `ZPPRSIPPC0012`) hanya menyajikan agregat global di level unit tanpa atribusi nomor mesin pencetak maupun *shift* kerja.
+Meskipun lini produksi Unit Cetak Pita Cukai memproses jutaan lembar dokumen sekuriti negara setiap hari dengan mesin-mesin modern, sistem pencatatan operasional di lapangan (*shop floor*) hingga akhir tahun 2025 masih terperangkap dalam kondisi pemisahan data (*data silo*). Dari sisi kuantitas di lapangan, hasil cetak harian, nomor mesin, dan nomor PO masih dicatat manual pada buku folio fisik yang menumpuk di meja kontrol mesin dan baru direkapitulasi saat momen Penilaian Kinerja Pegawai Kuartalan maupun Evaluasi Akhir Masa Kontrak. Sebaliknya, data kualitas dari sistem SAP (T-Code: `ZPPRSIPPC0012`) hanya menyajikan ringkasan global di level unit tanpa atribusi nomor mesin pencetak maupun *shift* kerja.
 ```
 
 ---
@@ -48,7 +48,7 @@ Meskipun lini produksi Unit Cetak Pita Cukai memproses jutaan lembar dokumen sek
 *Gambar 1.1: Grafik Distribusi Inschiet Cetak per Kuartal 2025 vs Garis Rata-rata Baseline 4,61% (Sumber: Rekap SIRINE & SAP ZPPRSIPPC0012)*
 
 > ***Business Insight Gambar 1.1:***  
-> Garis putus-putus oranye menunjukkan rata-rata baseline tahunan sebesar **4,61%**. Lonjakan batang Q4 ke level **5,11%** menegaskan bahwa ketiadaan sistem diagnostik berbasis kondisi mesin dan *shift* di lantai produksi mengakibatkan lonjakan volume pesanan selalu berbanding lurus dengan pembengkakan angka lembar rusak.
+> Garis putus-putus oranye menunjukkan rata-rata baseline tahunan sebesar **4,61%**. Lonjakan batang Q4 ke level **5,11%** menegaskan bahwa ketiadaan sistem diagnostik berbasis kondisi mesin dan *shift* di lapangan mengakibatkan lonjakan volume pesanan selalu berbanding lurus dengan pembengkakan angka lembar rusak.
 ```
 
 ---

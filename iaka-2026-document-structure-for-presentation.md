@@ -45,8 +45,8 @@
 ## 1.2 Masalah Operasional & Skala Dampak Finansial (The Blind Spot & Financial Exposure)
 > **Tujuan:** Menyatakan masalah operasional terukur dan membuktikan risiko finansial jika masalah dibiarkan.
 
-* **Identifikasi Masalah (The Blind Spot Pasca-SIRINE 2024):**
-  * SIRINE 2024 berhasil memetakan *jenis kerusakan* (inschiet turun ke 4,06% di akhir 2024).
+* **Identifikasi Masalah (The Blind Spot Pasca-SIRINE 3.5 (2024)):**
+  * SIRINE 3.5 (2024) berhasil memetakan *jenis kerusakan* (inschiet turun ke 4,06% di akhir 2024).
   * Memasuki 2025 timbul titik buta baru: *Tidak dapat diketahui mesin mana dan kondisi operasional shift/tim mana yang menjadi sumber masalah utama.*
   * Pemeriksaan mesin dilakukan secara bergilir tanpa prioritas data, memperpanjang *downtime* dan membiarkan mesin bermasalah tetap beroperasi.
 * **Kertas Kerja Skala Dampak Finansial:**
@@ -93,7 +93,7 @@
   * **Lapisan 1 (Data Capture & Entry):** Konfirmasi PO Digital + Manajemen Jadwal & Template Gilir Operator.
   * **Lapisan 2 (Analytics & Prescriptive Decision):** Engine pemrosesan data mentah SAP + Verifikasi HCTS menjadi visualisasi granular per mesin, per shift, dan per jenis kerusakan.
 * **Slot Visual / Arsitektur:**
-  * `[VISUAL: Diagram Evolusi SIRINE 2024 ke DSS SIRINE 2026]` *(Asset: image5.png)*
+  * `[VISUAL: Diagram Evolusi SIRINE 3.5 (2024) ke DSS SIRINE 2026]` *(Asset: image5.png)*
   * `[VISUAL: Diagram Arsitektur Sistem 2 Lapisan & Aliran Data]` *(Asset: image6.png)*
 
 ## 3.2 Breakdown 6 Modul Fitur Unggulan
@@ -108,7 +108,7 @@
 > **Tujuan:** Menampilkan keunggulan komparatif solusi dibanding cara kerja sebelumnya.
 
 * **Tabel Matriks Kapabilitas:**
-  * Perbandingan 6 parameter kapabilitas: Pra-2024 vs SIRINE 2024 vs DSS SIRINE 4.0 (2026).
+  * Perbandingan 6 parameter kapabilitas: Pra-2024 vs SIRINE 3.5 (2024) vs DSS SIRINE 4.0 (2026).
 
 ## 3.4 Alur Proses Kerja: Before $\rightarrow$ After
 * **Slot Visual / Alur Kerja:**

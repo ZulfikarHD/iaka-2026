@@ -41,10 +41,14 @@ Tabel 1.4 Matriks Risiko Pembiaran Operasional (*Cost of Inaction*)
 ## 3. Methodologies & Quality Tools
 
 ### A. Root Cause Analysis (Fishbone 4M/5M)
-- **Man (Manusia / Operasional):** Disparitas keahlian, kelelahan shift malam, ketidakseragaman penerapan SOP.
-- **Machine (Mesin & Komponen):** Penurunan performa mekanis, keausan suku cadang, *preventive maintenance* tidak sinkron.
-- **Method (Metode Kerja):** Standarisasi parameter setting mesin, pelaporan lisan, ketiadaan rekam jejak digital.
-- **Material (Bahan Baku & Suhu):** Sensitivitas kertas sekuriti terhadap kelembaban udara (plooi/zig-zag), variasi lot tinta.
+- **Man (Manusia / Operasional):** Ritme sirkadian dan kelelahan visual (*circadian fatigue*) pada shift malam (23.00–07.00 WIB), disparitas jam terbang teknis senior vs junior, beban kognitif pada pesanan desain baru.
+- **Machine (Komponen Mekanis & Pemeliharaan):** Degradasi fisik komponen presisi (*mechanical wear & tear*):
+  - *Rol Karet Tinta & Air:* Mengeras (*hardening*)/licin (*glazing*) $\rightarrow$ memicu cacat **blobor (*ink bleeding*)**, noda bintik, garis warna (*streaking*).
+  - *Selimut Karet (Blanket):* Kehilangan elastisitas/kempes (*blanket indentation*) $\rightarrow$ memicu hasil cetak **membayang (*ghosting*)** atau kepekatan warna tidak rata.
+  - *Penjepit Kertas (Grippers & Pads):* Ujung aus & tegangan per melemah $\rightarrow$ kertas masuk miring (*misfeed*) $\rightarrow$ memicu **register geser (*misregister*)** dan **kertas terlipat (*plooi / zig-zag*)**.
+  - *Pola Maintenance:* Servis berkala masih kaku berbasis kalender (*time-based*), belum berbasis riwayat kerusakan riil (*condition-based*).
+- **Method (Metode Kerja & Alur Informasi):** Penyetelan *make-ready* manual tanpa standar parameter digital; pelaporan kendala teknis lisan tanpa *historical log*; data penugasan harian terperangkap di buku folio fisik meja mesin.
+- **Material (Bahan Baku & Lingkungan):** Karakteristik higroskopis kertas sekuriti terhadap kelembaban udara (*Relative Humidity / RH*) yang memicu kertas bergelombang (*wavy edges / plooi*); penumpukan residu tinta sekuriti UV pada bak tinta.
 
 ### B. Instrument Validation (For Surveys / User Testing)
 - **Uji Validitas (Pearson Product Moment):** Menguji kesahihan butir kuesioner ($r_{\text{hitung}} > r_{\text{tabel}}$).

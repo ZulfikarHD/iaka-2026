@@ -182,7 +182,7 @@ Alur: Sebelum dan Sesudah DSS SIRINE 4.0
 
 Matriks Kapabilitas
 
-| Pertanyaan | Sirine 2024 | SIRINE 4.0 |
+| Pertanyaan | SIRINE 3.5 (2024) | SIRINE 4.0 |
 | Jenis kerusakan apa yang paling dominan pada produk pita cukai ? | √ | √ |
 | Pada mesin apa inchiet tertinggi produksi cetak pita cukai ? | X | √ |
 | Pada mesin x apa jenis kerusakan dominan atau breakdown nya ? | X | √ |
