@@ -1,0 +1,60 @@
+---
+description: Writing style and documentation standard for IAKA (Innovation & Kaizen Award) papers
+globs: makalah-iaka-2026/**/*.md
+alwaysApply: true
+---
+
+# IAKA Paper Writing Style & Standards
+
+Standards and conventions for writing Innovation and Kaizen Award (IAKA) papers for Perum Peruri (DSS SIRINE & operational papers).
+
+## 1. Core Narrative & Tone
+
+- **Flowing Industrial Storytelling:** Use structured, analytical, and narrative paragraphs to build operational context and shop-floor reality. Avoid shallow, prompt-like bullet point lists.
+- **Shop-Floor Operational Grounding:** Reflect real factory dynamics (Perum Peruri, Unit Cetak Pita Cukai, DJBC Kemenkeu RI, Komori/Ryobi fleets, 3 shifts 24/7, operator realities, and *data silo* frictions).
+- **Smooth Transition:** Connect problem background, root cause analysis, prescriptive solutions, and measurable impact naturally between sections and chapters.
+
+## 2. Structure & Visual Callouts
+
+- **Executive Takeaways:** Always provide a high-level summary at the start of chapters using blockquotes:
+  ```markdown
+  > ***Executive Takeaway:***  
+  > [Summary of volume, baseline defect rate, financial cost, operational blind spots, and verified savings/impact]
+  ```
+- **Business & Financial Insights:** Pair charts and key tables with actionable takeaway callouts:
+  ```markdown
+  > ***Business Insight Gambar 1.1:***  
+  > [1-2 sentences explaining what the visual trend implies for operations]
+  
+  > ***Key Financial Insight Tabel 1.3:***  
+  > 1. [Key point 1]
+  > 2. [Key point 2]
+  ```
+- **Figure & Table Captions:** Always cite verified sources beneath visual assets:
+  ```markdown
+  *Gambar X.X: Deskripsi Visual (Sumber: SAP ZPPRSIPPC0012 / QC Verifikasi)*
+  ```
+
+## 3. Data Integrity & Verification Standards
+
+- **Strict Data Attributes:** Every metric and number must include:
+  1. Value / Number (Nilai)
+  2. Unit (Satuan, e.g., Lembar Cetak, %, Rp, Jam)
+  3. Period (Periode, e.g., Jan–Mar 2025, Q1 2026)
+  4. Verified Source (Sumber Data, e.g., SAP T-Code `ZPPRSIPPC0012`, Modul QC Verifikasi)
+- **Mathematical Transparency:** Format calculations using LaTeX block math showing baseline comparison, step-by-step arithmetic, and cost conversion (e.g. standard tambah cetak @ Rp 3.000/lembar):
+  ```markdown
+  $$\begin{aligned}
+  \text{Volume Produksi Tahunan} &= 177.636.930 \text{ Lembar Cetak} \\
+  \text{Lembar Rusak Baseline (4,61\%)} &= 177.636.930 \times 4,61\% = \mathbf{8.189.062 \text{ Lembar}} \\
+  \text{Nilai Kerugian Finansial} &= 8.189.062 \times \text{Rp } 3.000 = \mathbf{\text{Rp } 24.567.186.000 \text{ / Tahun}}
+  \end{aligned}$$
+  ```
+
+## 4. Domain Terminology
+
+- **Inschiet:** Kerusakan cetak / defect rate.
+- **HCS / HCTS:** Hasil Cetak Sempurna / Hasil Cetak Tidak Sempurna.
+- **PCHT / MMEA:** Pita Cukai Hasil Tembakau / Minuman Mengandung Etil Alkohol.
+- **Evolutionary Context:** Reference SIRINE 2024 / SIRINE 3.5 as solving *what defect category occurred*, and DSS SIRINE 4.0 (2026) as solving *which machine, which shift, and what prescriptive maintenance action to execute*.
+- **5-Pillar Cost of Inaction:** Evaluate risks across Cost, Quality, Compliance, Safety & ESG, and Service SLA.
