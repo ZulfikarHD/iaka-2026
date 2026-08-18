@@ -343,16 +343,16 @@ $$\begin{aligned}
 &\approx \mathbf{\text{Rp } 6,82 \text{ Miliar / Tahun}}
 \end{aligned}$$
 
-##### 3. Realisasi Efisiensi Riil Semester 1 2026 (Januari – Juni 2026 / 103,3 Juta Lembar)
+##### 3. Simulasi Dampak Finansial dari Penyelamatan Lembar Fisik Semester 1 2026 (Januari – Juni 2026 / 103,3 Juta Lembar)
 $$\begin{aligned}
-\text{Lembar Diselamatkan Q1 2026 (4,34\%)} &= 57.385.254 \times (4,61\% - 4,34\%) = \mathbf{154.940 \text{ Lembar (Rp 464,82 Juta)}} \\
-\text{Lembar Diselamatkan Q2 2026 (3,33\%)} &= 45.960.434 \times (4,61\% - 3,33\%) = \mathbf{588.294 \text{ Lembar (Rp 1,76 Miliar)}} \\
-\text{Total Lembar Diselamatkan S1 2026} &= 154.940 + 588.294 = \mathbf{743.234 \text{ Lembar Kertas Sekuriti}} \\
-\text{Efisiensi Finansial Riil S1 2026} &= 743.234 \text{ lembar} \times \text{Rp } 3.000 = \mathbf{\text{Rp } 2.229.702.000} \\
-&\approx \mathbf{\text{Rp } 2,23 \text{ Miliar}}
+\text{Lembar Diselamatkan Q1 2026 (4,34\%)} &= 57.385.254 \times (4,61\% - 4,34\%) = \mathbf{154.940 \text{ Lembar (Simulasi: Rp 464,82 Juta*)}} \\
+\text{Lembar Diselamatkan Q2 2026 (3,33\%)} &= 45.960.434 \times (4,61\% - 3,33\%) = \mathbf{588.294 \text{ Lembar (Simulasi: Rp 1,76 Miliar*)}} \\
+\text{Total Lembar Fisik Diselamatkan S1 2026} &= 154.940 + 588.294 = \mathbf{743.234 \text{ Lembar Kertas Sekuriti (Riil)}} \\
+\text{Simulasi Efisiensi Finansial S1 2026} &= 743.234 \text{ lembar} \times \text{Rp } 3.000^* = \mathbf{\text{Rp } 2.229.702.000^*} \\
+&\approx \mathbf{\text{Rp } 2,23 \text{ Miliar^* (Cost Avoidance)}}
 \end{aligned}$$
 
-Kalkulasi matematis terbuka di atas menegaskan bahwa keberhasilan implementasi DSS SIRINE 4.0 pada periode pengujian semester pertama 2026 telah mengamankan penghematan riil sebesar **Rp 2,23 Miliar** dalam 6 bulan pertama, serta memvalidasi proyeksi efisiensi tahunan sebesar **Rp 6,82 Miliar per tahun** yang melampaui target awal Fase 1 secara meyakinkan.
+Kalkulasi matematis terbuka di atas menegaskan bahwa keberhasilan implementasi DSS SIRINE 4.0 pada periode pengujian semester pertama 2026 telah menyelamatkan **743.234 lembar kertas sekuriti secara fisik (riil)** dalam 6 bulan pertama dengan potensi efisiensi biaya (*cost avoidance*) berbasis simulasi estimasi sebesar **Rp 2,23 Miliar\***, serta memvalidasi proyeksi potensi efisiensi tahunan sebesar **Rp 6,82 Miliar per tahun\*** yang melampaui target awal Fase 1 secara meyakinkan.
 
 ---
 
