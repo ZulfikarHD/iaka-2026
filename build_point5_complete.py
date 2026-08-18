@@ -419,7 +419,7 @@ def build_slide_5_2(slide):
     )
 
     # Top 4 Hero KPI Cards
-    add_kpi_card(slide, 0.60, 1.90, 2.86, 1.08, "PENURUNAN INSCHIET (Q2 2026)", "-1,28 pp (-27,8%)", "Baseline 4,61% ➔ 3,33% (n = 45,96 Jt LK)", GREEN, FILL_LIGHT_GREEN, BORDER_GREEN)
+    add_kpi_card(slide, 0.60, 1.90, 2.86, 1.08, "PENURUNAN INSCHIET (Q2 2026)", "-1,28 pp (-27,8%)", "Baseline 4,61% ➔ 3,33% (Sumber: SAP ZPPRSIPPC0012)", GREEN, FILL_LIGHT_GREEN, BORDER_GREEN)
     add_kpi_card(slide, 3.69, 1.90, 2.86, 1.08, "WAKTU SERVIS PER MESIN", "< 2–4 Jam", "Pemeriksaan terpangkas ≥ 50%–75% (dari > 8 Jam)", PURPLE, FILL_LIGHT_PURPLE, BORDER_PURPLE)
     add_kpi_card(slide, 6.78, 1.90, 2.86, 1.08, "WAKTU REKAP EVALUASI HARIAN", "0 Menit / Hari", "Otomatis seketika (hemat ±45 menit/hari)", NAVY, FILL_LIGHT_NAVY, BORDER_NAVY)
     add_kpi_card(slide, 9.87, 1.90, 2.86, 1.08, "CAPAIAN TARGET MUTU FASE 1", "210% Tercapai", "Target < 4,00% (-0,61 pp) terlampaui ke 3,33%", GREEN, FILL_LIGHT_GREEN, BORDER_GREEN)
@@ -452,11 +452,18 @@ def build_slide_5_2(slide):
     tf.margin_top = Inches(0)
     tf.margin_left = Inches(0)
     p = tf.paragraphs[0]
-    p.text = "Grafik Tren Inschiet: Baseline vs Target MVP vs Realisasi S1 2026 (%)"
-    p.font.name = 'Arial'
-    p.font.size = Pt(7.8)
-    p.font.bold = True
-    p.font.color.rgb = NAVY
+    r1 = p.add_run()
+    r1.text = "Grafik Tren Inschiet: Baseline vs Target MVP vs Realisasi S1 2026 (%) "
+    r1.font.name = 'Arial'
+    r1.font.size = Pt(7.5)
+    r1.font.bold = True
+    r1.font.color.rgb = NAVY
+    r2 = p.add_run()
+    r2.text = "— Sumber: SAP ZPPRSIPPC0012"
+    r2.font.name = 'Arial'
+    r2.font.size = Pt(6.8)
+    r2.font.italic = True
+    r2.font.color.rgb = MUTED_TEXT
 
     # Native PPTX Clustered Column Chart
     chart_data = CategoryChartData()
@@ -465,7 +472,7 @@ def build_slide_5_2(slide):
 
     chart_shape = slide.shapes.add_chart(
         XL_CHART_TYPE.COLUMN_CLUSTERED,
-        Inches(0.72), Inches(3.68), Inches(5.91), Inches(1.36),
+        Inches(0.72), Inches(3.68), Inches(5.91), Inches(1.30),
         chart_data
     )
     chart = chart_shape.chart
@@ -485,7 +492,7 @@ def build_slide_5_2(slide):
     series.format.fill.fore_color.rgb = PURPLE
 
     # Table of 5 parameters Before vs After
-    table_shape_l = slide.shapes.add_table(5, 4, Inches(0.72), Inches(5.08), Inches(5.91), Inches(1.28))
+    table_shape_l = slide.shapes.add_table(5, 4, Inches(0.72), Inches(5.02), Inches(5.91), Inches(1.18))
     t_l = table_shape_l.table
     t_l.columns[0].width = Inches(1.35)
     t_l.columns[1].width = Inches(1.30)
@@ -507,6 +514,19 @@ def build_slide_5_2(slide):
         style_table_cell(t_l.cell(r_idx, 1), b_val, font_size=6.8, bold=False, text_color=RED if "5,11%" in b_val or "> 8" in b_val else DARK_TEXT, fill_color=bg_col, align=PP_ALIGN.CENTER)
         style_table_cell(t_l.cell(r_idx, 2), a_val, font_size=6.8, bold=True, text_color=GREEN if "3,33%" in a_val or "<" in a_val or "0" in a_val else DARK_TEXT, fill_color=bg_col, align=PP_ALIGN.CENTER)
         style_table_cell(t_l.cell(r_idx, 3), diff_val, font_size=6.8, bold=True, text_color=GREEN if "-" in diff_val or "Hemat" in diff_val or "Turun" in diff_val else DARK_NAVY, fill_color=bg_col)
+
+    # Source label under left table
+    tb_src_5_2 = slide.shapes.add_textbox(Inches(0.72), Inches(6.22), Inches(5.91), Inches(0.18))
+    tf_src_5_2 = tb_src_5_2.text_frame
+    tf_src_5_2.word_wrap = False
+    tf_src_5_2.margin_top = Inches(0)
+    tf_src_5_2.margin_left = Inches(0)
+    p = tf_src_5_2.paragraphs[0]
+    p.text = "*(Sumber Data Terverifikasi: Modul SAP ZPPRSIPPC0012 & Rekapitulasi Unit Verifikasi Mutu S1 2026)"
+    p.font.name = 'Arial'
+    p.font.size = Pt(6.5)
+    p.font.bold = True
+    p.font.color.rgb = DARK_NAVY
 
     # Right Panel: 2. PERBANDINGAN REALISASI VS RENCANA TARGET & LINIMASA
     header_right = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(6.90), Inches(3.08), Inches(5.83), Inches(0.34))
