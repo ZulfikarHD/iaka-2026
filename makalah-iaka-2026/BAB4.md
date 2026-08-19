@@ -60,7 +60,7 @@ Tabel 4.1 Matriks Kapabilitas Komparatif Tiga Generasi Sistem Operasional Unit C
 | Parameter Kapabilitas Operasional | Generasi 1: Cara Lama (Pra-2024) | Generasi 2: SIRINE 3.5 (2024) | Generasi 3: DSS SIRINE 4.0 (2026) | Nilai Tambah Operasional |
 | :--- | :---: | :---: | :---: | :--- |
 | **1. Identifikasi Cacat Dominan Unit** | Manual / Laporan Lisan | ✅ Ringkasan Global Unit | ✅ **Granular per Mesin & PO** | Mengetahui proporsi jenis cacat per nomor mesin secara presisi. |
-| **2. Pemetaan Mesin *Inschiet* Tertinggi** | ❌ Ketiadaan Data | ❌ Tidak Tersedia | ✅ **Real-Time per Unit Mesin** | Peringkat mutu seluruh 6 mesin cetak utama terpantau seketika. |
+| **2. Pemetaan Mesin *Inschiet* Tertinggi** | ❌ Ketiadaan Data | ❌ Tidak Tersedia | ✅ **Real-Time per Unit Mesin** | Peringkat mutu seluruh 9 mesin cetak terpantau seketika. |
 | **3. Audit Pareto Cacat per Mesin** | ❌ Spekulatif | ❌ Tidak Tersedia | ✅ **Pareto Spesifik Komponen** | Memberikan panduan suku cadang sebelum teknisi menyetel mesin. |
 | **4. Pelacakan Volume (LK) per Tim/*Shift*** | Buku Folio Manual | ❌ Tidak Tersedia | ✅ **Digital & Tervalidasi** | Visibilitas hasil cetak per regu kerja tercatat transparan. |
 | **5. Diagnosa Kausal: Mesin vs Tim/*Shift*** | ❌ Dugaan Subjektif | ❌ Tidak Tersedia | ✅ **Terpisah & Terverifikasi** | Membedakan intervensi teknis mesin vs pendampingan operator. |
@@ -99,7 +99,7 @@ graph TD
     E --> F["Laporan Mutu Bulanan SAP ZPPRSIPPC0012"]
     F -->|Ringkasan Global: Tanpa Nomor Mesin & Shift| G{"Lonjakan Cacat (Contoh: Blobor)"}
     G --> H["Pemeriksaan Mesin Secara Spekulatif"]
-    H -->|Pemeriksaan Bergilir 6 Mesin Utama| I["Waktu Henti Servis Lebih dari 8 Jam per Mesin"]
+    H -->|Pemeriksaan Bergilir 9 Mesin Cetak| I["Waktu Henti Servis Lebih dari 8 Jam per Mesin"]
     B --> J["Rekapitulasi Manual saat Penilaian Kinerja"]
     J -->|Beban Administrasi 45 Menit per Hari| K["Evaluasi Operator Tertunda & Cenderung Subjektif"]
     I --> L["Inschiet Terkunci Tinggi: Baseline 4,61% (Potensi Rugi Rp 24,56 Miliar/Tahun)"]
@@ -115,7 +115,7 @@ graph TD
 `[PLACEHOLDER_GAMBAR_FLOWCHART_ALUR_KERJA_LAMA_BEFORE]`
 
 > ***Business Insight Gambar 4.1:***  
-> Alur kerja lama memperlihatkan terputusnya arus data operasional. Laporan bulanan dari SAP hanya mengabarkan kenaikan jenis cacat tertentu secara umum tanpa menyertakan nomor mesin dan regu kerja yang mencetak. Akibatnya, teknisi terpaksa memeriksa seluruh enam mesin utama (Komori KMR 1–4 dan Ryobi RYB 1–2) satu per satu dengan waktu henti perbaikan mencapai **> 1 *shift* (> 8 jam) per mesin**, sementara evaluasi kinerja operator terlambat berbulan-bulan akibat rekapitulasi buku folio manual.
+> Alur kerja lama memperlihatkan terputusnya arus data operasional. Laporan bulanan dari SAP hanya mengabarkan kenaikan jenis cacat tertentu secara umum tanpa menyertakan nomor mesin dan regu kerja yang mencetak. Akibatnya, teknisi terpaksa memeriksa seluruh 9 mesin cetak (Komori KMR 1–4, Ryobi RYB 1–2, dan GTO 1–3) satu per satu dengan waktu henti perbaikan mencapai **> 1 *shift* (> 8 jam) per mesin**, sementara evaluasi kinerja operator terlambat berbulan-bulan akibat rekapitulasi buku folio manual.
 
 Secara kronologis di lapangan, alur kerja lama bermula saat operator menyelesaikan pencetakan suatu nomor pesanan di mesin cetak. Operator kemudian mencatat nomor PO, nomor mesin, giliran kerja, dan jumlah cetakan menggunakan pulpen pada buku folio fisik di meja kontrol. Lembaran buku folio ini tersimpan di laci meja mesin sehingga rentan robek, terselip, atau terkena cipratan air pembasah dan tinta. Di saat yang sama, tumpukan lembaran hasil cetak dikirim ke Unit Verifikasi untuk disortir. Petugas verifikasi menghitung jumlah lembar rusak (HCTS) dan memasukkannya ke sistem SAP sebagai ringkasan umum unit, tanpa mencatat identitas mesin pencetak maupun nama operator yang bertugas.
 
@@ -124,38 +124,47 @@ Kelemahan alur ini terlihat nyata saat laporan mutu bulanan diterbitkan. Ketika 
 ---
 
 ### 4.2.2 Alur Proses Kerja Sesudah Implementasi (Ekosistem Tindakan Presisi Berbasis Data)
-Penerapan DSS SIRINE 4.0 mengubah alur kerja operasional menjadi sebuah sistem terintegrasi yang cepat dan presisi. Setiap data yang dimasukkan saat proses cetak selesai langsung diolah menjadi petunjuk perbaikan bagi teknisi dan pengawas di lapangan, sebagaimana disajikan pada Gambar 4.2.
+Penerapan DSS SIRINE 4.0 mengubah alur kerja operasional menjadi sebuah sistem terintegrasi yang presisi. Sistem ini menjembatani jeda waktu proses antara Unit Cetak (3 gilir 24 jam) dan Unit Verifikasi (2 gilir dengan *lead time QC* 1–2 hari), sehingga setiap data penugasan di meja mesin dapat direkonsiliasikan secara otomatis dengan hasil audit mutu lembar Hasil Cetak Tidak Sempurna (HCTS), sebagaimana disajikan pada Gambar 4.2.
 
 ```mermaid
 graph TD
-    A["Penyelesaian Order PO di Mesin"] --> B["Input Form Konfirmasi PO Digital (Kurang dari 30 Detik)"]
-    B -->|Tarik Otomatis Data SAP + Jadwal Aktif| C[("Basis Data Terpusat SIRINE 4.0")]
-    C --> D["Dasbor Produksi Mesin Cetak Real-Time"]
-    D -->|Deteksi Mesin Anomali KMR4 Inschiet 6,2 Persen| E["Modul Jenis Kerusakan Tiap Mesin"]
-    E -->|Pareto Cacat Spesifik KMR4 70 Persen Blobor| F["Penanganan Presisi Sesuai Kondisi Riil"]
-    F -->|Teknisi Membawa Rol Karet Pengganti KMR4| G["Waktu Henti Servis 2-4 Jam (Turun 50-75%)"]
-    C --> H["Modul Produksi Unit Cetak Tim & Shift"]
-    H -->|Validasi Pasca-Servis: Deteksi Deviasi Shift Malam| I["Pendampingan Teknis Penyetelan Tinta Terarah"]
-    G --> J["Penurunan Inschiet Berkelanjutan Menuju 3,33% (Efisiensi Rp 6,82 Miliar/Tahun)"]
-    I --> J
+    A["Penyelesaian Order PO di Mesin Cetak (3 Gilir)"] --> B["Input Form Konfirmasi PO Digital (Kurang dari 30 Detik)"]
+    B -->|Rekam Data Penugasan: PO, Mesin, Shift, Tim| C[("Basis Data Terpusat SIRINE 4.0")]
+    
+    A --> D["Pengiriman Lembar Cetak ke Unit Verifikasi"]
+    D --> E["Pemeriksaan Mutu Fisik Lembar per Lembar (2 Gilir | Lead Time 1-2 Hari)"]
+    E --> F["Petugas Verifikasi Input Rekap Cacat HCTS per PO"]
+    
+    F -->|Rekonsiliasi Otomatis via Nomor PO| C
+    
+    C --> G["Dasbor Analitik Produksi & Modul Pareto Cacat"]
+    G -->|Evaluasi Briefing Harian: Deteksi Anomali KMR4 70% Blobor| H["Teknisi Eksekusi Servis Presisi (Membawa Rol Karet Pengganti)"]
+    H --> I["Waktu Henti Servis 2-4 Jam (Turun 50-75%)"]
+    
+    G -->|Deteksi Deviasi Kinerja Gilir Kerja Malam| J["Pengawas Berikan Pendampingan Penyetelan Tinta Terarah"]
+    
+    I --> K["Penurunan Inschiet Berkelanjutan Menuju 3,33% (Efisiensi Rp 6,82 Miliar/Tahun)"]
+    J --> K
 
     style B fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style D fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#e65100
     style E fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
-    style F fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style G fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style F fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
+    style G fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0
+    style H fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
     style I fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
-    style J fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px,color:#1b5e20
+    style J fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#2e7d32
+    style K fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px,color:#1b5e20
 ```
-*Gambar 4.2: Diagram Alur Proses Kerja Sesudah Implementasi DSS SIRINE 4.0: Ekosistem Tindakan Presisi Berbasis Data Granular Real-Time (Sumber: SOP Baru Unit Cetak Pita Cukai 2026)*  
+*Gambar 4.2: Diagram Alur Proses Kerja Sesudah Implementasi DSS SIRINE 4.0: Integrasi Rekonsiliasi Data Cetak & Verifikasi Menuju Tindakan Presisi (Sumber: SOP Baru Unit Cetak Pita Cukai 2026)*  
 `[PLACEHOLDER_GAMBAR_FLOWCHART_ALUR_KERJA_BARU_AFTER]`
 
 > ***Business Insight Gambar 4.2:***  
-> Alur kerja baru membangun kecepatan respon teknis di area mesin: Operator memasukkan konfirmasi PO secara digital dalam waktu kurang dari 30 detik $\rightarrow$ Dasbor *Produksi Mesin Cetak* mendeteksi mesin yang mengalami kenaikan cacat (misalnya Komori 4 dengan *inschiet* 6,2%) $\rightarrow$ Modul *Jenis Kerusakan Tiap Mesin* menunjukkan komponen bermasalah (70% cacat blobor akibat rol pembasah aus) $\rightarrow$ Teknisi langsung menuju Komori 4 membawa suku cadang yang sesuai (< 2–4 jam) $\rightarrow$ Dasbor *Produksi Unit Cetak* memvalidasi hasil kerja antar-gilir $\rightarrow$ Pengawas mendampingi operator gilir malam dalam menyetel bukaan tinta $\rightarrow$ Tingkat kerusakan cetak unit turun stabil hingga **3,33%**.
+> Alur kerja baru membangun integrasi yang teratur antar-unit: Operator mencatat konfirmasi penugasan PO secara digital di meja mesin (< 30 detik) $\rightarrow$ Lembar fisik diperiksa di Unit Verifikasi (2 gilir, jeda 1–2 hari) $\rightarrow$ Sistem secara otomatis menautkan data cacat HCTS dengan data mesin dan regu cetaknya $\rightarrow$ Dasbor analitik menyajikan peringkat mutu dan diagram Pareto jenis cacat $\rightarrow$ Pada rapat koordinasi harian (*Daily Production Meeting*), teknisi memprioritaskan perbaikan mesin kritis dengan membawa suku cadang yang tepat (< 2–4 jam) sementara pengawas membina regu kerja yang mengalami kendala teknis $\rightarrow$ Tingkat kerusakan cetak unit turun stabil hingga **3,33%**.
 
-Pada alur kerja baru ini, operator yang selesai mencetak langsung membuka formulir digital di meja kontrol mesin. Begitu nomor pesanan dimasukkan, sistem secara otomatis mengisi parameter pesanan dari SAP dan nama operator dari jadwal aktif dalam hitungan detik. Data transaksi ini langsung menyatu dengan data hasil sortir dari Unit Verifikasi, sehingga dasbor pemantauan performa mesin dapat menampilkan kondisi mutu secara seketika melalui indikator warna.
+Pada alur kerja baru ini, operator yang selesai mencetak suatu nomor pesanan langsung membuka formulir digital di meja kontrol mesin. Begitu nomor pesanan dimasukkan, sistem secara otomatis mengisi parameter spesifikasi pesanan dari SAP dan nama operator dari jadwal aktif dalam hitungan detik. Lembaran hasil cetak kemudian dikirim ke Unit Verifikasi yang beroperasi 2 gilir untuk diperiksa mutu fisiknya dengan waktu proses 1 hingga 2 hari kerja. Begitu petugas verifikasi memasukkan data sortiran lembar HCTS per nomor PO, DSS SIRINE 4.0 secara otomatis merekonsiliasikan data kerusakan tersebut dengan data nomor mesin, *shift*, dan tim kerja yang mencetaknya 1–2 hari sebelumnya.
 
-Ketika dasbor mendeteksi adanya mesin yang melampaui batas toleransi—sebagai contoh Mesin Komori 4 mencatat kerusakan 6,2%—teknisi pemeliharaan tidak perlu lagi meraba-raba penyebabnya. Teknisi cukup membuka modul kerusakan mesin untuk melihat diagram Pareto cacat, yang memperlihatkan bahwa sebagian besar cacat berupa blobor akibat permukaan rol karet pembasah yang mulai mengeras atau licin. Teknisi dapat langsung menuju Mesin Komori 4 dengan membawa rol karet pengganti yang tepat, menyelesaikan perbaikan dalam waktu 2 hingga 4 jam. Setelah kondisi fisik mesin normal, pengawas memeriksa hasil kerja antar-gilir melalui modul performa unit; jika ditemukan perbedaan mutu pada giliran kerja malam, pengawas segera memberikan arahan teknis penyetelan tinta kepada regu kerja terkait. Integrasi penanganan mesin dan pendampingan operator ini terbukti menurunkan *inschiet* unit secara konsisten hingga menyentuh **3,33% pada Q2 2026**.
+Hasil rekonsiliasi data ini langsung tersaji pada dasbor pemantauan performa dan modul jenis kerusakan tiap mesin. Ketika data menunjukkan adanya mesin yang melampaui batas toleransi—sebagai contoh Mesin Komori 4 mencatat lonjakan kerusakan dengan dominasi cacat blobor 70% akibat rol karet pembasah yang mulai mengeras atau licin—informasi ini langsung menjadi agenda aksi pada pertemuan harian (*Daily Production Meeting*). Teknisi pemeliharaan dapat langsung menuju Mesin Komori 4 dengan membawa rol karet pengganti yang tepat, menyelesaikan perbaikan dalam waktu 2 hingga 4 jam tanpa perlu memeriksa mesin lain secara spekulatif. Di saat yang sama, pengawas memanfaatkan data performa gilir kerja untuk memberikan bimbingan teknis penyetelan tinta yang terarah kepada operator gilir malam. Integrasi perbaikan mesin berbasis kondisi riil dan pembinaan operator terarah ini terbukti menurunkan *inschiet* unit secara konsisten hingga menyentuh **3,33% pada Q2 2026**.
 
 ---
 
@@ -222,7 +231,7 @@ Pelaksanaan uji coba skala terbatas (*Minimum Viable Product* / MVP) dirancang u
 Pelaksanaan uji coba ini didukung oleh struktur penanggung jawab yang jelas:
 Proyek inovasi ini dibina dan difasilitasi secara langsung oleh pejabat pimpinan unit kerja: **Kepala Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution (minimal setingkat Kepala Departemen / Kadep)**, dengan didampingi oleh **Kepala Seksi Cetak Pita Cukai** selaku fasilitator operasional. Keterlibatan pimpinan setingkat Kadep memberikan kepastian integrasi kerja lintas seksi antara Seksi Cetak, Seksi Verifikasi Mutu, dan Seksi Pemeliharaan Mesin, serta mempercepat pengesahan dokumen instruksi kerja yang baru.
 
-Uji coba dilaksanakan di Gedung Produksi Percetakan Sekuriti Karawang, mencakup **6 unit mesin cetak utama (4 mesin Komori: KMR 1–4 dan 2 mesin Ryobi: RYB 1–2)** serta **3 unit mesin penunjang GTO (GTO 1–3)**. Pengujian melibatkan seluruh **$\pm 42$ operator cetak dan kepala kelompok** dalam pola **3 gilir kerja (*shift*) selama 24 jam sehari**, dengan memanfaatkan perangkat komputer meja mesin dan jaringan intranet perusahaan yang telah terpasang.
+Uji coba dilaksanakan di Gedung Produksi Percetakan Sekuriti Karawang, mencakup **9 unit mesin cetak (4 mesin Komori: KMR 1–4, 2 mesin Ryobi: RYB 1–2, dan 3 mesin GTO: GTO 1–3)**. Pengujian melibatkan seluruh **$\pm 42$ operator cetak dan kepala kelompok** dalam pola **3 gilir kerja (*shift*) selama 24 jam sehari**, dengan memanfaatkan perangkat komputer meja mesin dan jaringan intranet perusahaan yang telah terpasang.
 
 Linimasa pelaksanaan uji coba dan tahapan penerapannya disajikan pada Gambar 4.3.
 
@@ -237,7 +246,7 @@ gantt
     Sosialisasi 42 Personel Operator/Regu     :done, p3, 2025-12-16, 2025-12-31
     Penarikan Buku Folio BA-PPC-2026-002      :done, p4, 2026-01-01, 2026-01-02
     section Fase 1: Uji Coba Lini (MVP)
-    Uji Coba Lini 6 Mesin KMR1-4, RYB1-2      :active, m1, 2026-01-02, 2026-03-31
+    Uji Coba Lini 9 Mesin Cetak               :active, m1, 2026-01-02, 2026-03-31
     Evaluasi Adaptasi Q1 Inschiet 4.34%       :done, m2, 2026-03-25, 2026-03-31
     section Fase 2: Penerapan Presisi Penuh
     Penerapan Diagnosa Preskriptif Q2 2026    :active, f1, 2026-04-01, 2026-06-30

@@ -1,4 +1,4 @@
-Tolong tulis dan optimasi secara menyeluruh konten untuk [BAB4] ke dalam file @makalah-iaka-2026/[BAB4].md.
+Tolong tulis dan optimasi secara menyeluruh konten untuk [BAB5] ke dalam file @makalah-iaka-2026/[BAB5].md.
 Gunakan referensi dari:
 1. Panduan juri di @template-document.md untuk bab terkait.
 2. Draf awal di @extracted_draft_iaka_v2.md.
@@ -18,4 +18,7 @@ Pedoman Eksekusi & Standar Kualitas (Wajib Diikuti):
    - Jelaskan *insight* bisnis dari setiap gambar/grafik yang ditampilkan.
 4. **Kepatuhan Format Juri**:
    - Penuhi seluruh poin wajib yang diminta juri pada bab ini (misal: kriteria satuan data, metode analisis akar masalah, tabel before/after dengan n, kertas kerja finansial terbuka, dsb).
-Tuliskan hasilnya secara lengkap langsung ke dalam file @makalah-iaka-2026/[BAB4].md.
+Tuliskan hasilnya secara lengkap langsung ke dalam file @makalah-iaka-2026/[BAB5].md.
+
+Additional Note :
+Untuk setiap data yang butuh visualisasi atau data visual sperti diagram,charting dan lain lain, jika bisa menggunakan formating apapun yang didukung oleh markdown, gunakan itu, seperti mermaid dan sebagainya, jika tidak ada yang bisa gunakan [PLACEHOLDER_VISUALISASI_ATAU_DATA_X]
