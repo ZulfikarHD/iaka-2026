@@ -20,7 +20,7 @@ Tabel 1.1 Profil Operasional dan Parameter Kapasitas Unit Cetak Pita Cukai
 
 | Parameter Operasional | Nilai / Spesifikasi | Satuan | Periode Berlaku | Sumber Data Terverifikasi |
 | :--- | :---: | :---: | :---: | :--- |
-| **Armada Mesin Cetak Utama** | **Komori (1–4), Ryobi (1–2), GTO (1–3)** | Unit Mesin | Aktif 2025–2026 | Data Inventaris Aset Departemen Strategic Business Unit High Security Solution |
+| **Armada Mesin Cetak Utama** | **Komori (1–4), Ryobi (1–2), GTO (1–3)** | Unit Mesin | Aktif 2025–2026 | Data Inventaris Aset Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution |
 | **Pola Gilir Kerja (*Shift*)** | **3 (Pagi, Sore, Malam)** | *Shift* / Hari | Harian 2025 | Standar Pola Kerja Unit Cetak Pita Cukai |
 | **Durasi Operasional Lini** | **24** | Jam / Hari | Harian 2025 | *Standard Operating Procedure* (SOP) Unit Cetak |
 | **Total Tenaga Kerja Operator** | **$\pm 42$** | Personel | Tahun 2025 | Data Penugasan Gilir Kerja Seksi Cetak |
@@ -28,7 +28,7 @@ Tabel 1.1 Profil Operasional dan Parameter Kapasitas Unit Cetak Pita Cukai
 | **Volume Order Aktual 2025** | **177.636.930** | Lembar Cetak | Tahun 2025 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
 | **Realisasi Volume Produksi Q1 2026** | **57.385.254** | Lembar Cetak | Jan – Mar 2026 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
 | **Realisasi Volume Produksi Q2 2026** | **45.960.434** | Lembar Cetak | Apr – Jun 2026 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
-*(Sumber: Departemen Strategic Business Unit High Security Solution & Sistem SAP Perum Peruri)*
+*(Sumber: Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution & Sistem SAP Perum Peruri)*
 
 ### 1.1.2 Keterbatasan Sistem Pencatatan Eksisting (*Data Silo* & Rekapitulasi Manual)
 Meskipun lini produksi Unit Cetak Pita Cukai memproses jutaan lembar dokumen sekuriti negara setiap hari dengan mesin-mesin modern, sistem pencatatan operasional di lapangan hingga akhir tahun 2025 masih terperangkap dalam kondisi **pemisahan data (*data silo*)**. Terdapat jurang pemisah yang lebar antara pencatatan kuantitas produksi di lapangan dengan pencatatan data kualitas di unit verifikasi dan sistem Enterprise Resource Planning (SAP).
@@ -115,7 +115,7 @@ Identifikasi masalah operasional pada Unit Cetak Pita Cukai didefinisikan secara
 
 Permasalahan utama yang terjadi adalah **ketidakmampuan sistem operasional eksisting dalam mengidentifikasi kontribusi kerusakan cetak (*inschiet*) secara granular per mesin dan per kondisi operasional (*shift*/tim kerja)**. Hal ini mengakibatkan terjadinya pemborosan biaya cetak bernilai miliaran rupiah, tingginya waktu henti mesin (*downtime*) akibat pemeriksaan teknis yang bersifat spekulatif, serta proses evaluasi kinerja operator yang lambat dan rentan bias.
 
-Permasalahan ini berpusat pada **proses cetak *sheet-fed offset* di Unit Cetak Pita Cukai, Departemen Strategic Business Unit High Security Solution Perum Peruri**. Kondisi titik buta operasional (*operational blind spot*) ini mulai teridentifikasi secara kritis sejak **Januari 2025**, yaitu ketika implementasi sistem SIRINE versi sebelumnya (SIRINE 3.5 (2024)) telah mencapai titik jenuh (*plateau effect*) dan memerlukan pendalaman data operasional yang lebih spesifik.
+Permasalahan ini berpusat pada **proses cetak *sheet-fed offset* di Unit Cetak Pita Cukai, Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution Perum Peruri**. Kondisi titik buta operasional (*operational blind spot*) ini mulai teridentifikasi secara kritis sejak **Januari 2025**, yaitu ketika implementasi sistem SIRINE versi sebelumnya (SIRINE 3.5 (2024)) telah mencapai titik jenuh (*plateau effect*) dan memerlukan pendalaman data operasional yang lebih spesifik.
 
 Ketiadaan data granular ini memberikan dampak negatif yang dirasakan oleh berbagai pihak di lingkungan operasional perusahaan:
 1. **Operator Cetak Lapangan ($\pm 42$ orang):** Mengalami kesulitan untuk memantau performa kualitas cetaknya secara harian, serta kehilangan kesempatan memperoleh umpan balik kinerja yang objektif dan konstruktif.

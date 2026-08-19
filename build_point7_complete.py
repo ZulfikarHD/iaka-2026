@@ -217,7 +217,7 @@ def build_slide_7_1(slide):
         (
             Inches(3.48), Inches(0.88), PURPLE, BORDER_PURPLE,
             "1. IK PENGISIAN KONFIRMASI PO CETAK DIGITAL (IK-PPC-2026-001)",
-            "• Nomor Dokumen & Pengesahan: ", "No. IK-PPC-2026-001 (Rev. 00) | Disahkan oleh Kadep SBU High Security Solution.",
+            "• Nomor Dokumen & Pengesahan: ", "No. IK-PPC-2026-001 (Rev. 00) | Disahkan oleh Kadep Khazanah dan Verifikasi SBU High Security Solution.",
             "• Ketetapan Operasional: ", "Wajib entri real-time tiap PO selesai (< 30 detik via Autofill) di meja kontrol 6 mesin cetak."
         ),
         (

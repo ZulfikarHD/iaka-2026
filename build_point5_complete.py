@@ -277,7 +277,7 @@ def build_slide_5_1(slide):
     p.font.color.rgb = PURPLE
 
     roles = [
-        ("• Pembina & Fasilitator (Kadep SBU HSS & Kasie Cetak): ", "Menjamin wewenang lintas seksi (Cetak, Verifikasi, Perawatan) & legalitas SOP."),
+        ("• Pembina & Fasilitator (Kadep Khazanah & Verifikasi SBU HSS & Kasie Cetak): ", "Menjamin wewenang lintas seksi (Cetak, Verifikasi, Perawatan) & legalitas SOP."),
         ("• Operator Meja Mesin (PIC Kelompok - ±42 Personel): ", "Input data PO via form digital < 30 detik seketika proses cetak selesai di mesin."),
         ("• Kepala Kelompok (Pengawas Shift): ", "Kelola jadwal gilir mingguan & verifikasi kelengkapan data di akhir gilir kerja."),
         ("• Kepala Unit & Teknisi Mesin: ", "Gunakan dasbor inschiet mesin untuk servis presisi & bimbingan teknis shift.")

@@ -117,7 +117,7 @@
 
 ## 3.5 Target Perbaikan & Rencana MVP
 * **Target Kuantitatif Fase 1:** Menurunkan inschiet dari baseline `4,61%` ke target `< 4,00%` (-0,61 pp).
-* **Calon Fasilitator Proyek:** Minimal Kepala Departemen Produksi.
+* **Calon Fasilitator Proyek:** Kepala Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution.
 
 ---
 

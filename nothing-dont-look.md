@@ -1,6 +1,6 @@
 # PRESENTASI IAKA 2026
 ## DSS SIRINE 4.0 — Decision Support System Cetak Pita Cukai
-### Perum Peruri · Unit Cetak Pita Cukai · Departemen SBU High Security Solution
+### Perum Peruri · Unit Cetak Pita Cukai · Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution
 
 ---
 

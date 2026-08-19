@@ -154,7 +154,7 @@
 
 ## 5.2 Struktur Tim Uji Coba, Peran PIC & Calon Fasilitator
 > **Tujuan:** Memenuhi syarat fasilitator minimal Kepala Departemen dan mendefinisikan akuntabilitas peran.
-* **Calon Fasilitator:** Kepala Departemen Produksi / Kepala Seksi Cetak Pita Cukai.
+* **Calon Fasilitator:** Kepala Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution / Kepala Seksi Cetak Pita Cukai.
 * **Struktur Pelaksana Lapangan:**
   * PIC Kelompok: Operator bertugas yang menginput data konfirmasi PO harian.
   * Kepala Kelompok: Verifikator kelengkapan input dan validitas data per shift.
