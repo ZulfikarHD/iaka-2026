@@ -28,6 +28,7 @@ Tabel 1.1 Profil Operasional dan Parameter Kapasitas Unit Cetak Pita Cukai
 | **Volume Order Aktual 2025** | **177.636.930** | Lembar Cetak | Tahun 2025 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
 | **Realisasi Volume Produksi Q1 2026** | **57.385.254** | Lembar Cetak | Jan – Mar 2026 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
 | **Realisasi Volume Produksi Q2 2026** | **45.960.434** | Lembar Cetak | Apr – Jun 2026 | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
+
 *(Sumber: Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution & Sistem SAP Perum Peruri)*
 
 ### 1.1.2 Keterbatasan Sistem Pencatatan Eksisting (*Data Silo* & Rekapitulasi Manual)
@@ -67,6 +68,7 @@ Tabel 1.2 Data Baseline Volume Produksi dan Inschiet Cetak Tahun 2025
 | **Inschiet Kuartal 4 (Q4)** | **5,11%** | Persentase (%) | Okt – Des 2025 | Rekap Verifikasi Mutu & SAP (`ZPPRSIPPC0012`) |
 | **RATA-RATA BASELINE 2025** | **4,61%** | Persentase (%) | Tahun 2025 | Konsolidasi Tahunan SIRINE & SAP (`ZPPRSIPPC0012`) |
 | **Durasi Trial Maintenance Mesin** | **> 1 *Shift* (> 8 Jam)** | Jam / Mesin | Tahun 2025 | *Maintenance Log* & Laporan Kerusakan Mesin |
+
 *(Sumber: Rekapitulasi Data Mutu Verifikasi & SAP ZPPRSIPPC0012)*
 
 ### 1.2.2 Analisis Fluktuasi Kuartalan Baseline 2025
@@ -98,6 +100,7 @@ Tabel 1.3 Kertas Kerja Realisasi Penurunan Inschiet dan Simulasi Efisiensi Finan
 | **Q1 2026** *(Masa Adaptasi)* | **57.385.254** | **4,34%** | -0,27 pp (-5,86%) | 2.645.460 lb | 2.490.520 lb | **154.940 Lembar** | **Rp 464.820.000** *(Rp 464,82 Juta)* |
 | **Q2 2026** *(Tindakan Presisi)* | **45.960.434** | **3,33%** | **-1,28 pp (-27,77%)** | 2.118.776 lb | 1.530.482 lb | **588.294 Lembar** | **Rp 1.764.882.000** *(Rp 1,76 Miliar)* |
 | **TOTAL SEMESTER 1 2026** | **103.345.688** | **3,89%** *(avg)* | **-0,72 pp (-15,62%)** | 4.764.236 lb | 4.021.002 lb | **743.234 Lembar** | **Rp 2.229.702.000** *(Rp 2,23 Miliar)* |
+
 *(Sumber: Konsolidasi Data Produksi & Verifikasi Mutu Peruri 2026)*  
 *\*Catatan Finansial: Angka Rp 3.000/lembar merupakan nilai estimasi internal biaya cetak untuk kebutuhan model simulasi dampak finansial dan analisis potensi efisiensi (cost avoidance), bukan rincian biaya pokok produksi (HPP) riil atau harga jual resmi produk pita cukai yang bersifat rahasia perusahaan (confidential).*
 
@@ -209,6 +212,7 @@ Tabel 1.4 Matriks Risiko Pembiaran Operasional (*Cost of Inaction*)
 | **3. Kepatuhan (*Compliance*)** | Pelanggaran standar akuntabilitas pelacakan (*traceability*) dokumen sekuriti negara karena pencatatan produksi manual di buku folio tidak dapat diaudit secara digital. | **TINGGI** | Temuan audit operasional internal dan ketidaksesuaian standar ISO 9001:2015. |
 | **4. K3L (*Safety & ESG*)** | Timbulan lembar rusak (*inschiet*) mencapai **7,37 – 8,18 Juta lembar / tahun** ($\pm 60–65$ Ton kertas terbuang), pemborosan konsumsi tinta/energi, dan peningkatan kelelahan kerja operator di *Shift* Malam. | **SEDANG** | Pemborosan sumber daya material/energi dan risiko kelelahan kerja (*fatigue*). |
 | **5. Layanan (*Service SLA*)** | Keterlambatan serah terima pesanan pita cukai ke DJBC akibat antrean proses cetak pengganti, yang berisiko mengganggu kelancaran pasokan pita cukai ke industri nasional. | **TINGGI** | Penurunan skor kepuasan pelanggan DJBC dan ancaman denda keterlambatan SLA. |
+
 *(Sumber: Hasil Analisis Risiko Manajemen Unit Cetak Pita Cukai)*
 
 ---
