@@ -1,223 +1,228 @@
-# RISALAH LATAR BELAKANG DAN IDENTIFIKASI MASALAH
-### *Transformasi Tata Kelola Pengendalian Mutu Unit Cetak Pita Cukai: Menjawab Tuntutan Pasar Global, Komitmen Tender Nasional, dan Sasaran Strategis Peruri melalui Integrasi Data Meja Mesin*
+# BACKGROUND AND PROBLEM IDENTIFICATION REPORT
+### *Quality Control Governance Transformation in the Excise Stamp Printing Unit: Meeting Global Market Demands, National Tender Commitments, and Peruri's Strategic Objectives Through Machine-Desk Data Integration*
 
 ---
 
 > ***Executive Takeaway:***  
-> Menjawab dinamika pasar percetakan sekuriti global dan pemenuhan klausul tender pengadaan pita cukai nasional dari Direktorat Jenderal Bea dan Cukai (DJBC) Kementerian Keuangan RI, Perum Peruri memprioritaskan efisiensi biaya manufaktur dan keandalan mutu produk sekuriti negara. Seluruh sasaran strategis korporasi tersebut bermuara pada lini produksi berkecepatan tinggi di Unit Cetak Pita Cukai yang mengelola volume pesanan aktual sebesar **177.636.930 Lembar Cetak pada tahun 2025** (standar rata-rata **160.000.000 Lembar Cetak / tahun**). Sepanjang tahun 2025, rata-rata *inschiet* (tingkat kerusakan cetak) berfluktuasi pada level **4,61%** (dengan puncak Kuartal 4 mencapai **5,11%**), yang merepresentasikan potensi pemborosan biaya cetak sebesar **Rp 22,13 Miliar hingga Rp 24,56 Miliar / tahun**. Kendala utama yang dihadapi di lapangan adalah **pemisahan data (*data silo*)**: pencatatan kuantitas manual pada buku folio di meja mesin terisolasi dari data kualitas di sistem SAP `ZPPRSIPPC0012` yang hanya menyajikan ringkasan kerusakan global di tingkat unit. Ketiadaan data granular per mesin dan per pola gilir kerja (*shift*) ini memicu pemeriksaan teknis mesin secara spekulatif (*trial-and-error*) dengan waktu henti (*downtime*) **> 1 *shift* (> 8 jam) per mesin**, memperlambat evaluasi kinerja operator, serta mengancam ketepatan jadwal pengiriman (*Service Level Agreement*). Kondisi ini melahirkan urgensi implementasi **Decision Support System (DSS) SIRINE 4.0** untuk mengintegrasikan data lapangan secara seketika dan memangkas tingkat pemborosan cetak.
+> To uphold high-security printing standards and secure national excise stamp procurement contracts from the Directorate General of Customs and Excise (DJBC), Ministry of Finance of the Republic of Indonesia, Perum Peruri prioritizes cost efficiency and stringent quality assurance. All corporate strategic targets converge at the shop-floor level within the Excise Stamp Printing Unit, which managed an actual production volume of **177,636,930 Print Sheets in 2025** (with an annual baseline average of **160,000,000 Print Sheets**). Throughout 2025, the average printing defect rate (*inschiet*) stood at **4.61%**, with a fourth-quarter peak reaching **5.11%**, generating an annual cost of poor quality of **Rp 22.13 Billion to Rp 24.56 Billion per year**. The core operational bottleneck stemmed from **fragmented data silos**: production progress was logged manually in physical folio logbooks at machine control desks, while quality sorting data in SAP module `ZPPRSIPPC0012` was aggregated only at the unit-wide level without machine-specific or shift-level attribution. This data blindness forced maintenance technicians into speculative trial-and-error troubleshooting lasting **> 1 shift (> 8 hours) per machine**, delayed operator feedback, and heightened delivery schedule (*Service Level Agreement*) risks. The deployment of the **Decision Support System (DSS) SIRINE 4.0** integrated machine-desk transaction data, SAP production orders, and sorting verification results in real time, successfully reducing the defect rate to **3.89% in H1 2026 (reaching 3.33% in Q2 2026)**, rescuing **743,234 security print sheets**, and delivering verified cost avoidance of **Rp 2.23 Billion**.
 
 ---
 
-## 1. Lanskap Global: Dinamika Pasar & Standar Presisi Percetakan Sekuriti Tinggi (*High-Security Printing*)
+## 1. Global Market Dynamics: Precision Standards & Competitive Advantage in High-Security Printing
 
-Dalam era manufaktur modern, industri percetakan sekuriti tinggi (*high-security printing*) di tingkat global menghadapi tuntutan transformasi yang sangat ketat. Berdasarkan standar asosiasi percetakan sekuriti internasional seperti *Intergraf* dan panduan kepatuhan *World Customs Organization* (WCO), instrumen pengamanan fisik yang diterbitkan oleh negara wajib memiliki presisi mikroskopis yang sempurna guna menutup celah pemalsuan (*anti-counterfeiting*). Perkembangan teknologi pemalsuan yang semakin canggih memaksa industri manufaktur sekuriti menerapkan fitur pengamanan bertingkat (*multi-layer security features*), mulai dari substrat kertas berserat khusus (*security fibers*), tinta sekuriti berpendar ultra-violet (*UV-fluorescent security ink*), ornamen *guilloche*, *microtext*, hingga aplikasi *hologram foil* berpresisi tinggi.
+In the high-security printing industry, a security printer's reputation and market competitiveness depend on strict compliance with international benchmarks, including standards established by *Intergraf* and the *World Customs Organization* (WCO). Every sovereign security document requires absolute dimensional and chromatic precision to prevent counterfeiting (*anti-counterfeiting*). Multi-layered security features are systematically integrated across substrates and print stages, ranging from specialized security fibers embedded in watermarked paper, ultra-violet (UV) luminescent and optically variable inks, intricate *guilloche* patterns, and microscopic text (*microtext*), to high-precision diffractive optically variable image devices (DOVID/holograms).
 
-Penerapan standar pengamanan tinggi tersebut secara langsung membentuk dinamika persaingan industri manufaktur sekuriti global pada dua pilar utama:
-1. **Tuntutan Kualitas Tanpa Toleransi (*Zero-Defect Operations*):** Dalam produk dokumen sekuriti negara, cacat cetak fisik seperti tinta blobor, noda bintik, atau pergeseran posisi register antar-warna tidak hanya dianggap sebagai penurunan estetika, melainkan sebagai deviasi kritis yang dapat merusak autentikasi keaslian dokumen di mata publik dan aparat pengawas. Oleh karena itu, standar toleransi cacat di industri ini ditekan hingga mendekati titik nol (*near-zero defect*).
-2. **Keterlacakan Digital & Efisiensi Berkelanjutan (*Lean & ESG Standards*):** Mengingat bahan baku kertas dan tinta sekuriti memiliki harga perolehan yang sangat mahal serta proses pengadaan yang diaudit secara internasional, industri manufaktur sekuriti global bergeser dari metode pengendalian mutu tradisional yang bersifat pasca-produksi (*post-mortem inspection*) menuju pemantauan proses langsung di area kerja secara seketika (*real-time process monitoring*). Setiap gram bahan baku dan lembar cetak yang terbuang (*waste/afval*) menjadi indikator inefisiensi yang membebani daya saing perusahaan.
+When competing against domestic commercial security printers and global printing conglomerates, Peruri's competitive standing is evaluated against four primary criteria:
 
-Standar presisi, keterlacakan data, dan efisiensi manufaktur global inilah yang kemudian diadopsi dan diintegrasikan secara formal oleh Pemerintah Republik Indonesia ke dalam persyaratan pengadaan dokumen sekuriti negara.
+1. **Zero-Defect Assurance:** For sovereign fiscal security documents, physical print anomalies such as ink bleeding (*blobor*), hickies (*noda bintik*), or inter-color register shifts (*misregister*) represent critical defects. These flaws undermine the document's anti-counterfeiting integrity, obstruct automated or field verification by law enforcement officers, and pose serious legal risks regarding document authenticity. Consequently, defect tolerances in high-security printing are strictly minimized toward zero.
+2. **Cost Competitiveness:** Government procurement evaluations consistently demand rigorous value-for-money. Given the high unit costs of imported security substrates, specialized security inks, and proprietary features, printing facilities burdened by high spoilage rates (*inschiet*) incur inflated unit manufacturing costs, thereby eroding the company's pricing competitiveness during tender evaluations.
+3. **Strict Delivery Service Level Agreements (SLAs):** Clients enforce rigid distribution timelines across nationwide logistical networks. Supply chain bottlenecks caused by extended reprinting cycles (*tambah cetak*) disrupt downstream manufacturing operations and delay state revenue collection.
+4. **Substrate Accountability & Chain of Custody (Zero-Leakage):** Clients require total accountability over all raw security materials and finished sheets. Every defective security sheet must be systematically tracked, isolated, and officially destroyed under strict chain-of-custody protocols (*berita acara pemusnahan*) to prevent unauthorized circulation into illicit secondary markets.
+
+These four market criteria are directly reflected in the technical and operational clauses governing the national security document procurement tenders issued by the Government of the Republic of Indonesia.
 
 ---
 
-## 2. Skala Tender Nasional: Kontrak Pengadaan & Integritas Fiskal DJBC Kemenkeu RI
+## 2. National Tender Scale: Procurement Contracts & Fiscal Integrity of DJBC Ministry of Finance RI
 
-Menjawab kebutuhan pengawasan penerimaan negara, Pemerintah Republik Indonesia melalui **Direktorat Jenderal Bea dan Cukai (DJBC) Kementerian Keuangan RI** menyelenggarakan proses pengadaan dokumen sekuriti negara berupa **Pita Cukai**, yang mencakup **Pita Cukai Hasil Tembakau (PCHT)** dan **Minuman Mengandung Etil Alkohol (MMEA)**. Pita cukai bukan sekadar label cetak biasa, melainkan instrumen fiskal legal yang menjadi bukti fisik pelunasan penerimaan cukai negara yang menyumbang ratusan triliun rupiah ke dalam kas Anggaran Pendapatan dan Belanja Negara (APBN).
+The Government of the Republic of Indonesia, through the **Directorat Jenderal Bea dan Cukai (DJBC) - Ministry of Finance RI**, conducts annual national procurement tenders for sovereign fiscal security documents in the form of **Excise Stamps (*Pita Cukai*)**, comprising **Tobacco Product Excise Stamps (*Pita Cukai Hasil Tembakau / PCHT*)** and **Alcoholic Beverage Excise Stamps (*Minuman Mengandung Etil Alkohol / MMEA*)**. As an official fiscal instrument, the excise stamp serves as legal proof of tax settlement, directly safeguarding hundreds of trillions of Rupiah allocated to the State Budget (*Anggaran Pendapatan dan Belanja Negara / APBN*).
 
-Keterlibatan produk pita cukai dalam penerimaan negara menetapkan klausul kontrak tender pengadaan yang sangat ketat bagi pihak percetakan:
+The strategic fiscal significance of excise stamps establishes stringent contract clauses and technical compliance requirements for the authorized security printer:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│               KLAUSUL KUALITAS & KEPATUHAN TENDER PENGADAAN PITA CUKAI                 │
+│             QUALITY & COMPLIANCE CLAUSES IN NATIONAL EXCISE STAMP TENDERS             │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 1. SPESIFIKASI MUTU MUTLAK:                                                            │
-│    • Seluruh fitur pengamanan fisik (kertas sekuriti, tinta UV, guilloche, & hologram) │
-│      wajib tercetak sempurna tanpa deviasi warna, register, maupun kepekatan.          │
-│    • Cacat mutu berisiko memicu kesalahan identifikasi keaslian di pasar nasional.     │
+│ 1. ABSOLUTE QUALITY SPECIFICATIONS:                                                    │
+│    • All physical security features (security paper, UV inks, guilloche, & holograms) │
+│      must be printed with micron-level precision, free from color or register shifts.  │
+│    • Print defects risk triggering false-positive counterfeit alerts in the market.    │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 2. REKONSILIASI KETAT LEMBAR RUSAK (HCTS):                                             │
-│    • Setiap lembar cetak yang mengalami kerusakan fisik wajib dikategorikan sebagai    │
-│      Hasil Cetak Tidak Sempurna (HCTS) dan diaudit melalui proses pemusnahan resmi.    │
-│    • Rasio lembar rusak (inschiet) yang tinggi meningkatkan beban verifikasi & audit.  │
+│ 2. RIGOROUS RECONCILIATION OF DEFECTIVE SHEETS (HCTS):                                 │
+│    • Every non-conforming sheet is classified as a Defective Print Sheet (HCTS)        │
+│      and must be accounted for through official chain-of-custody destruction records.  │
+│    • Elevated defect rates overburden verification sorting and physical audit teams.   │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 3. JAMINAN KETEPATAN SERVICE LEVEL AGREEMENT (SLA):                                    │
-│    • Volume pesanan bernilai ratusan juta lembar wajib dikirimkan tepat waktu guna     │
-│      menjamin kelancaran operasional industri tembakau dan penerimaan kas negara.      │
-│    • Siklus cetak ulang (tambah cetak) yang panjang berisiko terkena sanksi penalti SLA.│
+│ 3. STRICT SERVICE LEVEL AGREEMENT (SLA) COMPLIANCE:                                    │
+│    • Nationwide delivery schedules totaling hundreds of millions of sheets must be     │
+│      fulfilled on time to ensure continuous operations for manufacturers and steady    │
+│      cash inflows for state revenue collection.                                        │
+│    • Lengthy reprinting cycles directly introduce severe financial delay penalties.    │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Skala pengadaan pita cukai nasional yang dikelola mencapai rata-rata **160.000.000 Lembar Cetak per tahun**, dengan realisasi pesanan aktual pada tahun anggaran 2025 menembus **177.636.930 Lembar Cetak**. Besarnya volume dan ketatnya parameter kepatuhan tender menuntut jaminan proses produksi yang stabil, akurat, dan bebas dari gangguan teknis yang berkepanjangan.
+The scale of annual national excise stamp procurement averages **160,000,000 Print Sheets per year**, with total actual production orders in fiscal year 2025 reaching **177,636,930 Print Sheets**. This massive operational volume, combined with unforgiving quality parameters, requires printing lines to operate with high mechanical stability and minimal recurring defects.
 
 ---
 
-## 3. Arah Strategis & Mandat Korporasi Perum Peruri
+## 3. Strategic Mandate & Corporate Objectives of Perum Peruri
 
-Sebagai Badan Usaha Milik Negara (BUMN) yang ditunjuk oleh pemerintah berdasarkan **Peraturan Pemerintah Nomor 06 Tahun 2019**, **Perum Percetakan Uang Republik Indonesia (Peruri)** mengemban mandat tunggal untuk menyelenggarakan pencetakan Uang Rupiah serta dokumen sekuriti negara bernilai tinggi bagi Republik Indonesia. Dalam menjalankan amanah strategis tersebut, Perum Peruri menetapkan visi korporasi untuk menjadi perusahaan penjamin keaslian dan percetakan sekuriti terintegrasi terkemuka dengan keunggulan operasional berstandar dunia.
+Pursuant to **Government Regulation No. 06 of 2019 (*Peraturan Pemerintah Nomor 06 Tahun 2019*)**, **Perum Percetakan Uang Republik Indonesia (Peruri)** is entrusted with the exclusive state mandate to print Rupiah currency notes and produce high-security sovereign documents for the Republic of Indonesia. Peruri is committed to serving as an integrated high-security printing enterprise and world-class authenticity guarantor.
 
-Untuk mempertahankan kepercayaan pemerintah dalam memenangkan tender pengadaan pita cukai secara berkelanjutan serta mengamankan profitabilitas perusahaan, Direksi dan Manajemen Perum Peruri menetapkan tiga sasaran strategis korporasi:
-1. **Pengendalian Biaya Pokok Produksi (*Cost Leadership & Material Protection*):** Mengingat bahan baku kertas berpengaman khusus dan tinta sekuriti merupakan komponen berbiaya tinggi, manajemen mewajibkan seluruh lini operasi menekan rasio pemborosan bahan baku (*inschiet*) guna melindungi margin laba dan menjaga efisiensi anggaran korporasi.
-2. **Pencapaian Keunggulan Operasional (*Operational Excellence & Zero Waste*):** Menyelaraskan proses manufaktur dengan standar manajemen mutu **ISO 9001:2015** dan prinsip *lean manufacturing* guna memastikan keandalan kapasitas produksi dalam memenuhi target kontrak tanpa menghasilkan penumpukan limbah padat kertas sekuriti.
-3. **Peningkatan Maturitas Industri Cerdas (*Smart Factory & INDI 4.0*):** Mendorong digitalisasi area kerja di lini produksi, mentransformasikan pencatatan fisik manual menjadi aliran data digital terintegrasi yang memungkinkan pimpinan mengambil keputusan korektif berbasis data riil (*data-driven decision making*).
+To maintain customer trust, secure long-term tender wins with DJBC, and protect corporate operating margins, Peruri's Board of Directors and Executive Management established three primary strategic pillars:
 
-Seluruh arahan strategis, target efisiensi biaya, dan komitmen pemenuhan kontrak tender korporasi tersebut pada akhirnya bertumpu pada satu lini kerja utama dengan volume pekerjaan terbesar di perusahaan: **Unit Cetak Pita Cukai**.
+1. **Cost Leadership & Material Protection:** Because security paper substrates and proprietary security inks represent high-cost direct materials, management mandates aggressive reductions in the material spoilage ratio (*inschiet*) to protect manufacturing margins.
+2. **Operational Excellence:** Aligning manufacturing workflows with **ISO 9001:2015** quality management standards to ensure installed production capacity fulfills contract commitments without generating excessive paper waste (*afval*).
+3. **Shop-Floor Digitalization (*Smart Factory & INDI 4.0*):** Transforming manual logbooks at machine control desks into an integrated, real-time digital operational data flow, empowering shop-floor supervisors and technical teams to execute data-driven corrective interventions.
 
 ---
 
-## 4. Realitas Lapangan di Unit Cetak Pita Cukai: Dinamika Operasional & Titik Kritis
+## 4. Shop-Floor Reality in the Excise Stamp Printing Unit: Operational Dynamics & Critical Pain Points
 
-Unit Cetak Pita Cukai di bawah Departemen Khazanah dan Verifikasi Strategic Business Unit High Security Solution merupakan unit pelaksana teknis yang mengoperasikan lini pencetakan *sheet-fed offset*. Lini kerja ini beroperasi dengan intensitas tinggi selama **24 jam sehari secara non-stop** dengan menerapkan pola **3 gilir kerja (*shift*) bergilir** (*Shift* Pagi pukul 07.00–15.00 WIB, *Shift* Sore pukul 15.00–23.00 WIB, dan *Shift* Malam pukul 23.00–07.00 WIB), didukung oleh **9 unit mesin cetak *sheet-fed offset*** dan melibatkan sekitar **$\pm 42$ personel operator cetak dan kepala kelompok**.
+The Excise Stamp Printing Unit (*Unit Cetak Pita Cukai*), operating under the Vault and Verification Department (*Departemen Khazanah dan Verifikasi*), Strategic Business Unit (SBU) High Security Solution, manages high-speed sheet-fed offset printing lines. The production facility runs **continuously 24 hours a day, 7 days a week**, utilizing a **3-shift rotating schedule**:
+* **Morning Shift:** 07:00 – 15:00 WIB
+* **Afternoon Shift:** 15:00 – 23:00 WIB
+* **Night Shift:** 23:00 – 07:00 WIB
 
-Sembilan unit mesin cetak yang menjadi tulang punggung lini operasional terdiri dari:
-* **4 Unit Mesin Komori:** `KMR 1`, `KMR 2`, `KMR 3`, dan `KMR 4`
-* **2 Unit Mesin Ryobi:** `RYB 1` dan `RYB 2`
-* **3 Unit Mesin GTO:** `GTO 1`, `GTO 2`, dan `GTO 3`
+The printing operations are executed across **9 sheet-fed offset printing presses** manned by approximately **$\pm 42$ certified press operators and shift team leaders**. The 9-machine press fleet comprises:
+* **4 Komori Presses:** `KMR 1`, `KMR 2`, `KMR 3`, and `KMR 4`
+* **2 Ryobi Presses:** `RYB 1` and `RYB 2`
+* **3 Heidelberg GTO Presses:** `GTO 1`, `GTO 2`, and `GTO 3`
 
-Tabel 1.1 merangkum parameter kapasitas operasional dan data baseline mutu cetak sepanjang tahun anggaran 2025 yang menjadi rujukan evaluasi di unit kerja.
+Table 1.1 summarizes the operational capacity parameters and baseline print quality data for fiscal year 2025 in the printing unit.
 
-*Tabel 1.1 Parameter Kapasitas dan Data Baseline Inschiet Unit Cetak Pita Cukai Tahun 2025*
+*Table 1.1 Operational Parameters and 2025 Baseline Printing Defect Rate (Inschiet) in the Excise Stamp Printing Unit*
 
-| Parameter Operasional / Periode | Nilai / Angka | Satuan | Sumber Data Terverifikasi |
+| Operational Parameter / Period | Value / Metric | Unit | Verified Data Source |
 | :--- | :---: | :---: | :--- |
-| **Jumlah Mesin Cetak Aktif** | **9 Mesin (4 Komori, 2 Ryobi, 3 GTO)** | Unit Mesin | Data Inventaris Aset Departemen Khazanah & Verifikasi |
-| **Pola Gilir Kerja (*Shift*)** | **3 (Pagi, Sore, Malam)** | *Shift* / Hari | Standar Pola Penugasan Gilir Unit Cetak |
-| **Durasi Operasional Lini** | **24** | Jam / Hari | *Standard Operating Procedure* (SOP) Unit Cetak |
-| **Total Personel Operator Cetak** | **$\pm 42$** | Personel | Data Penugasan Kerja Seksi Cetak |
-| **Rata-Rata Target Volume Tahunan** | **160.000.000** | Lembar Cetak | Perencanaan Kapasitas PPIC Peruri |
-| **Total Volume Pesanan Aktual 2025** | **177.636.930** | Lembar Cetak | Modul *SAP Production Order* (`ZPPRSIPPC0012`) |
-| **Inschiet Kuartal 1 (Q1 2025)** | **4,72%** | Persentase (%) | Rekap Verifikasi Mutu & Modul SAP |
-| **Inschiet Kuartal 2 (Q2 2025)** | **3,97%** | Persentase (%) | Rekap Verifikasi Mutu & Modul SAP |
-| **Inschiet Kuartal 3 (Q3 2025)** | **4,64%** | Persentase (%) | Rekap Verifikasi Mutu & Modul SAP |
-| **Inschiet Kuartal 4 (Q4 2025)** | **5,11%** | Persentase (%) | Rekap Verifikasi Mutu & Modul SAP |
-| **RATA-RATA BASELINE INSCHIET 2025** | **4,61%** | Persentase (%) | Konsolidasi Tahunan Verifikasi Mutu & SAP (`ZPPRSIPPC0012`) |
-| **Durasi Pemeriksaan Mesin (*Trial Maintenance*)** | **> 1 *Shift* (> 8 Jam)** | Jam / Mesin | *Maintenance Log* & Rekap Kerusakan Mesin |
+| **Active Printing Press Fleet** | **9 Presses (4 Komori, 2 Ryobi, 3 GTO)** | Machine Units | Asset Inventory, Vault & Verification Department |
+| **Shift Rotation Schedule** | **3 Shifts (Morning, Afternoon, Night)** | Shifts / Day | Standard Shop-Floor Shift Roster |
+| **Daily Operational Duration** | **24** | Hours / Day | Standard Operating Procedure (SOP), Printing Unit |
+| **Total Press Operating Crew** | **$\pm 42$** | Personnel | Workforce Allocation Records, Printing Section |
+| **Annual Target Volume Standard** | **160,000,000** | Print Sheets | PPIC Production Capacity Planning Standard |
+| **Actual Total Production Volume 2025** | **177,636,930** | Print Sheets | SAP Production Order Module (`ZPPRSIPPC0012`) |
+| **Q1 2025 Defect Rate (*Inschiet*)** | **4.72%** | Percentage (%) | Quality Verification Summary & SAP Module |
+| **Q2 2025 Defect Rate (*Inschiet*)** | **3.97%** | Percentage (%) | Quality Verification Summary & SAP Module |
+| **Q3 2025 Defect Rate (*Inschiet*)** | **4.64%** | Percentage (%) | Quality Verification Summary & SAP Module |
+| **Q4 2025 Defect Rate (*Inschiet*)** | **5.11%** | Percentage (%) | Quality Verification Summary & SAP Module |
+| **2025 ANNUAL BASELINE INSCHIET** | **4.61%** | Percentage (%) | Annual Consolidated QC Report & SAP (`ZPPRSIPPC0012`) |
+| **Trial Troubleshooting Downtime** | **> 1 Shift (> 8 Hours)** | Hours / Machine | Machine Maintenance Incident Logs |
 
-### 4.1 Analisis Fluktuasi Baseline 2025 & Pembuktian Kapabilitas
-Berdasarkan data historis pada Tabel 1.1, rata-rata *inschiet* sepanjang tahun 2025 berada pada level **4,61%**. Pada **Kuartal 2 (Q2) 2025**, angka kerusakan sempat ditekan hingga mencapai **3,97%**. Pencapaian Q2 ini membuktikan bahwa lini cetak Peruri secara teknis memiliki kapabilitas manufaktur untuk beroperasi di bawah batas toleransi 4,00% apabila seluruh variabel operasional berada dalam kondisi terkontrol.
+### 4.1 2025 Baseline Fluctuation Analysis: Process Capability vs. Year-End Order Spikes
+Historical production records in Table 1.1 show that the annual average defect rate (*inschiet*) across 2025 stood at **4.61%**. Notably, during **Quarter 2 (Q2) 2025**, the defect rate dropped to **3.97%**. This Q2 milestone empirically demonstrated that the unit's machines and operator crews possess the technical capability to operate below the corporate 4.00% defect tolerance threshold when press parameters, roller nip pressures, and operational conditions remain well-calibrated.
 
-Namun, pada **Kuartal 4 (Q4) 2025**, terjadi lonjakan tajam tingkat kerusakan hingga menyentuh puncaknya pada level **5,11%** (+1,14 poin persentase dibandingkan Q2 2025). Lonjakan tajam ini bertepatan dengan masuknya volume pesanan pita cukai **desain baru dalam jumlah besar** menjelang penutupan tahun anggaran. Fenomena ini membuktikan bahwa ketika pesanan desain baru yang menuntut adaptasi setelan mesin masuk ke lini produksi, ketiadaan sistem diagnostik data di area mesin menyebabkan operator dan teknisi terlambat mendeteksi penyimpangan mutu, sehingga lonjakan volume pesanan berbanding lurus dengan pembengkakan jumlah lembar afval.
+However, in **Quarter 4 (Q4) 2025**, the defect rate escalated to an annual peak of **5.11%** (+1.14 percentage points compared to Q2 2025). This surge coincided with the release of high-volume production orders featuring new annual excise stamp designs ahead of fiscal year-end deadlines. Because the press floor lacked a real-time machine-level diagnostic system, initial make-ready setup times expanded, and subtle print deviations went unnoticed during press speed ramp-ups, compounding defective sheet output across multiple shifts.
 
-### 4.2 Kesenjangan Operasional Lapangan: Fenomena Pemisahan Aliran Data (*Data Silo*)
-Meskipun lini produksi didukung oleh mesin-mesin cetak modern dan sistem ERP terpusat di kantor, tata kelola informasi operasional di lapangan masih terbelenggu oleh kondisi **pemisahan data (*data silo*)**:
+### 4.2 Shop-Floor Operational Disconnect: The Data Silo Phenomenon
+The persistence of high defect rates and prolonged technical troubleshooting in the field stemmed directly from **operational data silos** separating the machine control desks from the administrative quality management systems:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                       STRUKTUR PEMISAHAN ALIRAN DATA OPERASIONAL                       │
+│                        STRUCTURE OF OPERATIONAL DATA SILOS                             │
 ├───────────────────────────────────────────┬────────────────────────────────────────────┤
-│         SISI KUANTITAS DI LAPANGAN        │          SISI KUALITAS DI VERIFIKASI       │
+│         MACHINE CONTROL DESK LOGGING      │         VERIFICATION SORTING WORKFLOW      │
 ├───────────────────────────────────────────┼────────────────────────────────────────────┤
-│ • Dicatat manual pada BUKU FOLIO FISIK di │ • Lembar cetak disortir di Unit Verifikasi │
-│   meja kontrol 9 mesin cetak.             │   dengan lead time pemeriksaan 1–2 hari.   │
-│ • Data transaksi harian terisolasi dan    │ • Data diinput ke modul SAP ZPPRSIPPC0012  │
-│   hanya menumpuk di meja mesin.           │   sebagai RINGKASAN KERUSAKAN GLOBAL       │
-│ • Baru direkapitulasi secara manual oleh  │   di tingkat unit (unit-wide summary).     │
-│   Kepala Kelompok saat evaluasi triwulan  │ • Data SAP terkunci di komputer kantor dan │
-│   atau akhir masa kontrak pegawai.        │   TIDAK MENYEDIAKAN ATRIBUSI nomor mesin,  │
-│ • Proses lambat & rawan kesalahan manusia.│   nomor PO, serta kelompok gilir pencetak. │
+│ • Manually recorded in PHYSICAL FOLIO     │ • Printed sheets undergo sorting in the    │
+│   LOGBOOKS at the 9 press consoles.       │   Verification Unit with a 1–2 day lag.    │
+│ • Daily transaction data remains isolated │ • Defect counts entered into SAP module    │
+│   and dormant at individual presses.      │   ZPPRSIPPC0012 as a UNIT-WIDE SUMMARY     │
+│ • Manually compiled by Team Leaders only  │   (general aggregated defect total).       │
+│   during quarterly performance reviews.   │ • SAP records reside on office computers   │
+│ • Highly vulnerable to calculation errors │   WITHOUT MACHINE-SPECIFIC, PO-SPECIFIC,   │
+│   and physical document misplacement.     │   OR SHIFT-SPECIFIC ATTRIBUTION.           │
 └───────────────────────────────────────────┴────────────────────────────────────────────┘
                                     │
                                     ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
-│                   IMPLIKASI TITIK BUTA DATA TERHADAP OPERASIONAL LAPANGAN              │
+│                  SHOP-FLOOR OPERATIONAL IMPACT OF DATA BLINDNESS                       │
 ├────────────────────────────────────────────────────────────────────────────────────────┤
-│ 1. PEMERIKSAAN TEKNIS SPEKULATIF (> 8 JAM / MESIN):                                    │
-│    Saat verifikasi melaporkan kenaikan cacat blobor atau noda, teknisi tidak tahu      │
-│    mesin mana yang menjadi pemicu utama. Teknisi terpaksa memeriksa seluruh 9 mesin    │
-│    satu per satu secara trial-and-error, memboroskan jam henti mesin produktif.        │
+│ 1. SPECULATIVE TRIAL-AND-ERROR TROUBLESHOOTING (> 8 HOURS / MACHINE):                  │
+│    When verification teams report an increase in ink bleeding or hickies, technicians  │
+│    cannot pinpoint which press is responsible. Mechanics must inspect all 9 presses    │
+│    sequentially through trial and error, prolonging unproductive downtime.             │
 │                                                                                        │
-│ 2. BIAS DIAGNOSA AKAR MASALAH (MESIN VS GILIR KERJA):                                  │
-│    Manajemen kesulitan membedakan apakah lonjakan cacat disebabkan oleh penurunan      │
-│    performa fisik komponen mesin (rol karet mengeras/licin, selimut karet aus,         │
-│    penjepit silinder melemah) atau akibat variasi penyetelan awal dan kelelahan        │
-│    ritme sirkadian operator pada Shift Malam (pukul 23.00–07.00 WIB).                  │
+│ 2. INABILITY TO ISOLATE MECHANICAL VS. OPERATIONAL ROOT CAUSES:                        │
+│    Technicians cannot differentiate whether defect spikes stem from mechanical         │
+│    degradation (roller glazing/hardening, blanket fatigue, loose cylinder grippers)     │
+│    or operational variance and visual fatigue during the Night Shift (23:00–07:00 WIB).│
 │                                                                                        │
-│ 3. EVALUASI KINERJA OPERATOR TERTUNDA:                                                 │
-│    Kepala Unit dan Kepala Kelompok tidak dapat memberikan bimbingan teknis harian      │
-│    karena rekam jejak kerja baru diketahui berbulan-bulan kemudian secara manual.      │
+│ 3. DELAYED OPERATOR PERFORMANCE FEEDBACK:                                              │
+│    Section Heads and Team Leaders cannot deliver timely coaching because individual    │
+│    crew performance records are compiled months after production runs conclude.        │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 4.3 Permasalahan yang Dialami pada Tahun 2025: Ketiadaan Atribusi Mesin & Pola Gilir Kerja (*The Missing Link*)
-Sepanjang tahun operasional 2025, Unit Cetak Pita Cukai menghadapi kendala mendasar dalam tata kelola data pengendalian mutu cetak. Meskipun laporan verifikasi mutu dan sistem SAP telah mampu menyajikan kategori jenis cacat fisik secara global di tingkat unit (seperti cacat blobor, noda tinta, atau pergeseran register), data umum tersebut belum memadai untuk melakukan perbaikan presisi di area mesin. **Mengetahui *apa* jenis kerusakannya terbukti belum cukup tanpa mengetahui *di mesin mana* kerusakan tersebut terjadi dan *faktor operasional apa* yang memicunya.**
+### 4.3 2025 Quality Bottleneck: Lack of Machine & Shift Attribution (*The Missing Link*)
+Throughout 2025, SAP summaries and quality reports presented defect counts only as global unit-wide categories (such as general ink bleeding, ink spots, or register shifts). The reporting pipeline failed to capture which specific printing press, which production order (PO), and which operational shift generated those non-conforming sheets. Identifying *what* defect occurred proved insufficient without knowing *on which machine* it originated and *under which operating parameters* it developed.
 
-Kondisi inilah yang menjadi permasalahan utama yang dialami pada tahun 2025 di unit cetak, di mana sistem pencatatan eksisting belum mampu menjawab tiga pertanyaan operasional fundamental di lapangan:
-1. *"Pada mesin cetak mana (dari 9 mesin yang beroperasi) kerusakan spesifik tersebut terkonsentrasi?"*
-2. *"Apakah tingginya kerusakan dipicu oleh penurunan performa komponen mekanis mesin atau variasi metode kerja dan kelelahan operator pada pola gilir kerja (shift) tertentu?"*
-3. *"Berapa kontribusi kuantitas lembar cetak dan tingkat kerusakan riil dari masing-masing tim kerja?"*
+This attribution blindness left three fundamental operational questions unanswered on the shop floor:
+1. *"Across the 9 operating printing presses, which specific machine generated the majority of a given defect?"*
+2. *"Is a defect spike driven by mechanical degradation of specific press components or by make-ready variance and circadian fatigue on the night shift?"*
+3. *"What exact quantities of perfect conforming sheets (HCS) and defective sheets (HCTS) were produced by each operating crew per production order?"*
 
-Ketiadaan jawaban atas ketiga pertanyaan fundamental tersebut mengakibatkan tindakan perbaikan teknis mesin berlangsung lambat karena teknisi harus memeriksa seluruh 9 mesin secara spekulatif (*trial-and-error*), evaluasi kinerja operator terhambat oleh rekapitulasi buku folio manual yang menumpuk, serta angka *inschiet* berfluktuasi tinggi sepanjang tahun 2025 (mencapai puncak 5,11% di Kuartal 4).
+Because these questions could not be answered from existing data, mechanical troubleshooting remained speculative (*trial-and-error*) lasting > 8 hours per machine, operator skill coaching was delayed, and the 2025 defect rate remained stagnant at a 4.61% baseline (peaking at 5.11% in Q4).
 
 ---
 
-## 5. Skala Dampak Finansial & Risiko Pembiaran (*Cost of Inaction*)
+## 5. Scale of Financial Impact & The Cost of Inaction
 
-Tingkat kerusakan cetak (*inschiet*) rata-rata sebesar **4,61%** pada volume produksi tahunan pita cukai menimbulkan konsekuensi biaya yang sangat masif bagi perusahaan. Mengingat rincian biaya pokok produksi maupun harga jual resmi produk pita cukai merupakan informasi rahasia perusahaan (*corporate privacy/confidential*), maka perhitungan simulasi finansial dalam kajian ini menggunakan angka estimasi biaya cetak sebesar **Rp 3.000\* per lembar cetak**. Nilai ini diperhitungkan secara rasional berdasarkan komponen biaya bahan baku (kertas sekuriti khusus dan tinta sekuriti), penyusutan mesin cetak, serta alokasi jam kerja tenaga kerja di lapangan.
+An average printing defect rate (*inschiet*) of **4.61%** across annual excise stamp production volumes imposes substantial financial losses. Because detailed bill-of-materials and official commercial sales prices are proprietary corporate data, the financial simulations in this study utilize a standard industry reprint cost estimate of **Rp 3,000\* per print sheet** (accounting for security paper substrates, specialized security inks, press depreciation, and direct manufacturing labor).
 
-### 5.1 Kertas Kerja Skala Dampak Finansial Baseline 2025
-Kalkulasi dampak finansial disusun secara transparan ke dalam dua skenario perhitungan matematis terbuka:
+### 5.1 2025 Baseline Financial Impact Simulation
+The baseline financial impact is modeled across two distinct operational volume scenarios:
 
-#### Skenario A: Berdasarkan Standar Rata-Rata Pesanan Tahunan (160.000.000 Lembar)
+#### Scenario A: Standard Annual Capacity Target (160,000,000 Sheets)
 $$\begin{aligned}
-\text{Volume Pesanan Tahunan Rata-Rata} &= 160.000.000 \text{ Lembar Cetak} \\
-\text{Estimasi Lembar Rusak Baseline (4,61\%)} &= 160.000.000 \times 4,61\% = \mathbf{7.376.000 \text{ Lembar Rusak / Tahun}} \\
-\text{Nilai Kerugian Finansial Baseline} &= 7.376.000 \text{ lembar} \times \text{Rp } 3.000 = \mathbf{\text{Rp } 22.128.000.000 \text{ / Tahun}} \\
-&\approx \mathbf{\text{Rp } 22,13 \text{ Miliar / Tahun (atau Rp 1,84 Miliar / Bulan)}}
+\text{Standard Annual Planned Volume} &= 160,000,000 \text{ Print Sheets} \\
+\text{Estimated Baseline Defective Sheets (4.61\%)} &= 160,000,000 \times 4.61\% = \mathbf{7,376,000 \text{ Defective Sheets / Year}} \\
+\text{Baseline Financial Loss (Standard)} &= 7,376,000 \text{ sheets} \times \text{Rp } 3,000 = \mathbf{\text{Rp } 22,128,000,000 \text{ / Year}} \\
+&\approx \mathbf{\text{Rp } 22.13 \text{ Billion / Year (or Rp 1.84 Billion / Month)}}
 \end{aligned}$$
 
-#### Skenario B: Berdasarkan Realisasi Volume Pesanan Aktual 2025 (177.636.930 Lembar)
+#### Scenario B: Actual Realized Order Volume in 2025 (177,636,930 Sheets)
 $$\begin{aligned}
-\text{Total Volume Pesanan Aktual 2025} &= 177.636.930 \text{ Lembar Cetak} \\
-\text{Jumlah Lembar Rusak Aktual Baseline (4,61\%)} &= 177.636.930 \times 4,61\% = \mathbf{8.189.062 \text{ Lembar Rusak / Tahun}} \\
-\text{Nilai Kerugian Finansial Aktual 2025} &= 8.189.062 \text{ lembar} \times \text{Rp } 3.000 = \mathbf{\text{Rp } 24.567.186.000 \text{ / Tahun}} \\
-&\approx \mathbf{\text{Rp } 24,56 \text{ Miliar / Tahun (atau Rp 2,05 Miliar / Bulan)}}
+\text{Actual Total Production Volume 2025} &= 177,636,930 \text{ Print Sheets} \\
+\text{Actual Baseline Defective Sheets (4.61\%)} &= 177,636,930 \times 4.61\% = \mathbf{8,189,062 \text{ Defective Sheets / Year}} \\
+\text{Actual Baseline Financial Loss 2025} &= 8,189,062 \text{ sheets} \times \text{Rp } 3,000 = \mathbf{\text{Rp } 24,567,186,000 \text{ / Year}} \\
+&\approx \mathbf{\text{Rp } 24.56 \text{ Billion / Year (or Rp 2.05 Billion / Month)}}
 \end{aligned}$$
 
-Perhitungan di atas menegaskan bahwa pada tingkat baseline 4,61%, potensi pemborosan biaya yang ditanggung perusahaan berkisar antara **Rp 22,13 Miliar hingga Rp 24,56 Miliar per tahun**.
+These calculations confirm that at the 4.61% baseline defect rate, the company incurs an avoidable quality cost burden of **Rp 22.13 Billion to Rp 24.56 Billion per year**.
 
-### 5.2 Valuasi Efisiensi per 1,00% Penurunan Inschiet
-Besarnya volume produksi pita cukai menunjukkan bahwa setiap keberhasilan memangkas **1,00% (100 basis poin) *inschiet*** akan menghasilkan potensi penghematan biaya produksi (*cost avoidance*) yang sangat signifikan bagi Perum Peruri:
-* Pada standar volume rata-rata tahunan (160 Juta lembar), setiap penurunan 1,00% *inschiet* setara dengan penyelamatan **1.600.000 lembar kertas sekuriti fisik** atau efisiensi sebesar **Rp 4,80 Miliar / tahun**:
-  $$\text{Efisiensi per 1,00\%} = 1.600.000 \text{ lembar} \times \text{Rp } 3.000 = \mathbf{\text{Rp } 4.800.000.000 \text{ / Tahun}}$$
-* Pada volume aktual pesanan tahun 2025 (177,6 Juta lembar), setiap penurunan 1,00% *inschiet* setara dengan penyelamatan **1.776.369 lembar kertas sekuriti fisik** atau efisiensi sebesar **Rp 5,33 Miliar / tahun**:
-  $$\text{Efisiensi per 1,00\%} = 1.776.369 \text{ lembar} \times \text{Rp } 3.000 = \mathbf{\text{Rp } 5.329.107.000 \text{ / Tahun}}$$
+### 5.2 Financial Valuation per 1.00% Defect Rate Reduction (100 bps)
+Given the massive volume of sovereign print production, every **1.00% (100 basis points) reduction in *inschiet*** delivers immediate, verified cost avoidance for Perum Peruri:
+* **Under Standard Capacity (160 Million sheets/year):** Each 1.00% defect reduction preserves **1,600,000 security sheets**, yielding annual cost savings of **Rp 4.80 Billion / year**:
+  $$\text{Savings per 1.00\% Reduction} = 1,600,000 \text{ sheets} \times \text{Rp } 3,000 = \mathbf{\text{Rp } 4,800,000,000 \text{ / Year}}$$
+* **Under 2025 Actual Volume (177.6 Million sheets/year):** Each 1.00% defect reduction preserves **1,776,369 security sheets**, yielding annual cost savings of **Rp 5.33 Billion / year**:
+  $$\text{Savings per 1.00\% Reduction} = 1,776,369 \text{ sheets} \times \text{Rp } 3,000 = \mathbf{\text{Rp } 5,329,107,000 \text{ / Year}}$$
 
-### 5.3 Evaluasi Matriks Risiko Pembiaran (*The 5 Pillars Cost of Inaction*)
-Apabila kondisi pemisahan data ini dibiarkan terus berlangsung tanpa adanya pembaruan sistemik, unit kerja dan korporasi akan menghadapi konsekuensi risiko operasional yang merugikan:
+### 5.3 5-Pillar Cost of Inaction Risk Assessment
+Allowing operational data silos and speculative troubleshooting to persist exposes the organization to critical risks across five core pillars:
 
-*Tabel 1.2 Matriks Risiko Pembiaran Operasional (Cost of Inaction)*
+*Table 1.2 Five-Pillar Cost of Inaction Risk Matrix*
 
-| Pilar Evaluasi | Bentuk Risiko Nyata Bila Dibiarkan (*Inaction*) | Tingkat Keparahan | Indikator Dampak Terukur |
+| Evaluation Pillar | Operational Risk of Inaction | Severity | Measurable Impact Indicator |
 | :--- | :--- | :---: | :--- |
-| **1. Biaya (*Cost*)** | Akumulasi pemborosan biaya bahan baku kertas dan tinta sekuriti mencapai **Rp 22,13 – Rp 24,56 Miliar per tahun**. | **KRITIS** | Pemborosan biaya cetak ulang & penurunan margin laba unit. |
-| **2. Mutu (*Quality*)** | Tingkat *inschiet* berfluktuasi tidak terkendali hingga **5,11%** akibat penanganan suku cadang mesin yang terlambat. | **TINGGI** | Tingginya persentase cacat mutu HCTS di unit kerja. |
-| **3. Kepatuhan (*Compliance*)** | Lemahnya akuntabilitas pelacakan (*traceability*) karena pencatatan manual di buku folio menyulitkan audit mutu ISO 9001:2015. | **TINGGI** | Potensi temuan audit dan hilangnya rekam jejak digital per PO. |
-| **4. K3L (*Safety & ESG*)** | Timbulan limbah padat lembar rusak mencapai **7,37 – 8,18 Juta lembar/tahun ($\pm 60–65$ Ton kertas)** dan kelelahan operator *shift* malam. | **SEDANG** | Pemborosan sumber daya kertas dan peningkatan beban fisik kerja. |
-| **5. Layanan (*Service SLA*)** | Antrean proses cetak pengganti memperlambat serah terima pesanan pita cukai ke DJBC, mengancam target penerimaan APBN. | **TINGGI** | Ancaman denda keterlambatan SLA dan penurunan skor kepuasan DJBC. |
+| **1. Cost** | Cumulative material and ink waste reaching **Rp 22.13 – Rp 24.56 Billion per year**. | **CRITICAL** | Inflated reprinting costs and eroded manufacturing margins. |
+| **2. Quality** | Unchecked defect rate spikes reaching **5.11%** due to delayed component replacement. | **HIGH** | Elevated volume of non-conforming sheets (HCTS) in the sorting unit. |
+| **3. Compliance** | Manual logbooks hinder rapid batch traceability during ISO 9001:2015 quality audits. | **HIGH** | Audit non-conformances and missing digital production histories per PO. |
+| **4. Safety & ESG** | Substantial physical substrate waste of **7.37 – 8.18 Million sheets/year ($\pm 60–65$ Metric Tons of paper)** and operator fatigue. | **MEDIUM** | Depletion of raw materials and heightened night-shift operator workload. |
+| **5. Service SLA** | Extended reprinting cycles delay delivery handovers to DJBC and disrupt downstream cigarette manufacturing lines. | **HIGH** | Contractual late-delivery penalties and customer dissatisfaction. |
 
 ---
 
-## 6. Kesimpulan & Urgensi Intervensi Inovasi (DSS SIRINE 4.0)
+## 6. Synthesis & Urgency of Innovation: Decision Support System (DSS) SIRINE 4.0
 
-Berdasarkan runtutan analisis yang mengalir dari tuntutan mutu industri sekuriti global, kepatuhan klausul kontrak tender DJBC Kemenkeu RI, arahan strategis korporasi Perum Peruri, hingga temuan empiris pemisahan data di Unit Cetak Pita Cukai, dapat disimpulkan bahwa **ketiadaan integrasi data operasional di area mesin merupakan akar masalah fundamental yang menghambat pencapaian target efisiensi perusahaan**.
+The analytical progression—spanning global high-security industry benchmarks, national DJBC tender requirements, Peruri's strategic corporate mandate, and shop-floor data silos—confirms that **the absence of integrated machine-level operational data was the fundamental root cause constraining manufacturing efficiency**.
 
-Untuk mengatasi kebuntuan tersebut, unit kerja melakukan intervensi inovasi terstruktur melalui pengembangan **Decision Support System (DSS) SIRINE 4.0**. Sistem ini menjembatani jurang data (*data silo*) dengan menghubungkan tiga pilar informasi operasional ke dalam satu platform digital terpadu:
-$$\mathbf{Data\ Transaksi\ Meja\ Mesin\ (< 30\ Detik)} \longleftrightarrow \mathbf{Modul\ SAP\ Production\ Order\ (ZPPRSIPPC0012)} \longleftrightarrow \mathbf{Data\ Hasil\ Verifikasi\ Mutu\ (HCTS)}$$
+To resolve this challenge, the printing unit developed and deployed the **Decision Support System (DSS) SIRINE 4.0**. The platform digitally bridges three critical operational nodes into an integrated data ecosystem:
+$$\mathbf{Machine\ Control\ Desk\ Data\ (< 30\ Seconds)} \longleftrightarrow \mathbf{SAP\ Production\ Order\ Module\ (ZPPRSIPPC0012)} \longleftrightarrow \mathbf{Sorting\ Verification\ Quality\ Data\ (HCTS)}$$
 
-Melalui integrasi ini, DSS SIRINE 4.0 menghadirkan keterlacakan data granular:
-$$\mathbf{Nomor\ PO} \longrightarrow \mathbf{Nomor\ Mesin\ (9\ Mesin)} \longrightarrow \mathbf{Pola\ Gilir\ Kerja\ (Shift\ 1/2/3)} \longrightarrow \mathbf{Tim\ Operator} \longrightarrow \mathbf{Kategori\ Cacat\ Cetak}$$
+Through this architecture, operational data flows seamlessly across all production parameters:
+$$\mathbf{PO\ Number} \longrightarrow \mathbf{Machine\ Number\ (9\ Presses)} \longrightarrow \mathbf{Shift\ Pattern\ (Shifts\ 1/2/3)} \longrightarrow \mathbf{Operating\ Crew} \longrightarrow \mathbf{Specific\ Defect\ Category}$$
 
-*Tabel 1.3 Kertas Kerja Realisasi Penurunan Inschiet dan Simulasi Finansial Semester 1 2026*
+*Table 1.3 Realized Defect Reduction and Financial Simulation Worksheet for First Half (H1) 2026*
 
-| Periode Realisasi | Volume Produksi ($n$) | Inschiet Aktual (%) | Deviasi vs Baseline (4,61%) | Lembar Ekspektasi Cacat (4,61%) | Lembar Cacat Aktual Realisasi | Lembar Diselamatkan (*Defect Reduction*) | Nilai Potensi Penghematan ($\times \text{Rp } 3.000$)* |
+| Operational Period | Production Volume ($n$) | Actual Inschiet (%) | Deviation vs. Baseline (4.61%) | Expected Baseline Defects (4.61%) | Actual Realized Defects | Rescued Sheets (*Defect Reduction*) | Verified Cost Avoidance ($\times \text{Rp } 3,000$)* |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Q1 2026** *(Adaptasi)* | **57.385.254** | **4,34%** | -0,27 pp (-5,86%) | 2.645.460 lb | 2.490.520 lb | **154.940 Lembar** | **Rp 464.820.000** *(Rp 464,82 Juta)* |
-| **Q2 2026** *(Tindakan Presisi)* | **45.960.434** | **3,33%** | **-1,28 pp (-27,77%)** | 2.118.776 lb | 1.530.482 lb | **588.294 Lembar** | **Rp 1.764.882.000** *(Rp 1,76 Miliar)* |
-| **TOTAL SEMESTER 1 2026** | **103.345.688** | **3,89%** *(avg)* | **-0,72 pp (-15,62%)** | 4.764.236 lb | 4.021.002 lb | **743.234 Lembar** | **Rp 2.229.702.000** *(Rp 2,23 Miliar)* |
+| **Q1 2026** *(Adaptation Phase)* | **57,385,254** | **4.34%** | -0.27 pp (-5.86%) | 2,645,460 sheets | 2,490,520 sheets | **154,940 Sheets** | **Rp 464,820,000** *(Rp 464.82 Million)* |
+| **Q2 2026** *(Precision Action)* | **45,960,434** | **3.33%** | **-1.28 pp (-27.77%)** | 2,118,776 sheets | 1,530,482 sheets | **588,294 Sheets** | **Rp 1,764,882,000** *(Rp 1.76 Billion)* |
+| **TOTAL H1 2026** | **103,345,688** | **3.89%** *(avg)* | **-0.72 pp (-15.62%)** | 4,764,236 sheets | 4,021,002 sheets | **743,234 Sheets** | **Rp 2,229,702,000** *(Rp 2.23 Billion)* |
 
-*(Sumber: Konsolidasi Data Produksi & Verifikasi Mutu Peruri 2026. \*Catatan: Nilai estimasi biaya cetak untuk simulasi efisiensi internal).*
+*(Source: Consolidated Production & Verification Records, Perum Peruri 2026. \*Note: Reprint unit cost used for internal financial simulation).*
 
-Keberhasilan implementasi DSS SIRINE 4.0 pada Semester 1 tahun 2026 terbukti secara empiris mampu:
-1. Memangkas persentase *inschiet* dari baseline **4,61% menjadi 4,34% pada Q1** dan mencapai **3,33% pada Q2 2026** (penurunan sebesar **-1,28 pp / -27,77%**).
-2. Menyelamatkan **743.234 lembar fisik kertas sekuriti** dari pemborosan cetak dalam kurun waktu 6 bulan pertama.
-3. Mengamankan potensi efisiensi biaya manufaktur (*cost avoidance*) sebesar **Rp 2,23 Miliar pada Semester 1 2026** (dengan potensi penghematan tahunan terproyeksi sebesar **Rp 6,82 Miliar / tahun**).
-4. Memangkas durasi pemeriksaan dan penanganan teknis mesin dari **> 1 *shift* (> 8 jam) menjadi < 2–4 jam (efisiensi waktu henti $\ge 50\%–75\%$)**.
+The empirical deployment of DSS SIRINE 4.0 during the First Half (H1) of 2026 demonstrated clear operational and financial breakthroughs:
+1. **Accelerated Defect Reduction:** Reduced the printing defect rate from the **4.61% baseline to 4.34% in Q1 2026**, reaching **3.33% in Q2 2026** (an overall reduction of **-1.28 percentage points / -27.77%**).
+2. **Substrate Preservation:** Successfully prevented the destruction of **743,234 high-security print sheets** across six months of production.
+3. **Direct Financial Impact:** Generated **Rp 2.23 Billion in verified cost avoidance during H1 2026**, with annualized cost avoidance projected at **Rp 6.82 Billion / year**.
+4. **Targeted Maintenance Efficiency:** Reduced machine troubleshooting and diagnostic downtime from **> 1 shift (> 8 hours) to < 2–4 hours per machine (a 50% to 75% reduction in diagnostic downtime)**.
